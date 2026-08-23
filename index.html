@@ -29,7 +29,6 @@
       flex-direction: column;
     }
 
-    /* Navbar */
     header {
       background: rgba(18, 25, 39, 0.95);
       position: sticky;
@@ -72,7 +71,6 @@
       border-color: var(--primary);
     }
 
-    /* Categorías */
     .categories {
       display: flex;
       gap: 0.8rem;
@@ -97,7 +95,6 @@
       color: #fff;
     }
 
-    /* Grid de Juegos */
     main {
       flex: 1;
       padding: 1rem 2rem 3rem;
@@ -144,7 +141,6 @@
       text-align: center;
     }
 
-    /* Modal de Juego */
     .modal {
       display: none;
       position: fixed;
@@ -198,7 +194,6 @@
 </head>
 <body>
 
-  <!-- Encabezado -->
   <header>
     <a href="#" class="brand">DIAMONDS</a>
     <div class="search-bar">
@@ -206,7 +201,6 @@
     </div>
   </header>
 
-  <!-- Filtros / Categorías -->
   <nav class="categories">
     <button class="cat-btn active" data-category="all">Todos</button>
     <button class="cat-btn" data-category="accion">Acción</button>
@@ -214,12 +208,10 @@
     <button class="cat-btn" data-category="puzzle">Puzzle</button>
   </nav>
 
-  <!-- Catálogo de Juegos -->
   <main>
     <div class="games-grid" id="gamesGrid"></div>
   </main>
 
-  <!-- Modal / Pantalla de juego -->
   <div class="modal" id="gameModal">
     <div class="modal-content">
       <div class="modal-header">
@@ -237,11 +229,11 @@
         title: "Subway Surfers",
         category: "accion",
         image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=300&q=80",
-        url: "https://superteamxx.github.io/Subway-Surfers/"
+        url: "https://subwaysurfersgame.github.io/"
       },
       {
         id: 2,
-        title: "Super Mario HTML5",
+        title: "Super Mario (A = Correr, S = Saltar)",
         category: "accion",
         image: "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=300&q=80",
         url: "https://chanmeng666.github.io/super-mario-makey-makey/"
@@ -300,21 +292,21 @@
         title: "Canvas Tetris",
         category: "puzzle",
         image: "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=300&q=80",
-        url: "https://dionyziz.github.io/canvas-tetris/"
+        url: "https://skid.github.io/canvas-tetris/"
       },
       {
         id: 11,
-        title: "Doodle Jump HTML5",
+        title: "Chrome Dino Runner",
         category: "arcade",
         image: "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=300&q=80",
-        url: "https://bcoll.github.io/doodle-jump/"
+        url: "https://wayou.github.io/t-rex-runner/"
       },
       {
         id: 12,
-        title: "Breakout (Arkanoid)",
-        category: "arcade",
+        title: "Connect 4 (4 en Línea)",
+        category: "puzzle",
         image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=300&q=80",
-        url: "https://straker.github.io/phaser-breakout/"
+        url: "https://kenrick95.github.io/c4/"
       }
     ];
 
@@ -348,6 +340,10 @@
       modalTitle.textContent = game.title;
       gameFrame.src = game.url;
       modal.classList.add('open');
+      // Enfocar automáticamente el iframe para que el teclado funcione al instante
+      setTimeout(() => {
+        gameFrame.focus();
+      }, 500);
     }
 
     closeModal.addEventListener('click', () => {
