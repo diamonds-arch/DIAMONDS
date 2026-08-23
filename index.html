@@ -102,7 +102,7 @@
 
     .games-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
       gap: 1.2rem;
     }
 
@@ -224,16 +224,16 @@
   <header>
     <a href="#" class="brand">DIAMONDS</a>
     <div class="search-bar">
-      <input type="text" id="searchInput" placeholder="Buscar juegos...">
+      <input type="text" id="searchInput" placeholder="Buscar juegos top...">
     </div>
   </header>
 
   <nav class="categories">
     <button class="cat-btn active" data-category="all">Todos</button>
-    <button class="cat-btn" data-category="arcade">Arcade</button>
     <button class="cat-btn" data-category="accion">Acción</button>
-    <button class="cat-btn" data-category="puzzle">Puzzle</button>
     <button class="cat-btn" data-category="carreras">Carreras</button>
+    <button class="cat-btn" data-category="casual">Casual</button>
+    <button class="cat-btn" data-category="retro">Retro</button>
   </nav>
 
   <main>
@@ -255,36 +255,76 @@
 
   <script>
     const games = [
-      { id: 1, title: "Space Invaders", category: "arcade", image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&auto=format&fit=crop&q=80", url: "https://funhtml5games.com/spaceinvaders/index.html" },
-      { id: 2, title: "Galaga Classic", category: "arcade", image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=400&auto=format&fit=crop&q=80", url: "https://funhtml5games.com/galaga/index.html" },
-      { id: 3, title: "Pacman Classic", category: "arcade", image: "https://images.unsplash.com/photo-1579373903781-fd5c0c30c4cd?w=400&auto=format&fit=crop&q=80", url: "https://freepacman.org/" },
-      { id: 4, title: "Super Mario HTML5", category: "accion", image: "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=400&auto=format&fit=crop&q=80", url: "https://chanmeng666.github.io/super-mario-makey-makey/" },
-      { id: 5, title: "Flappy Bird", category: "arcade", image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400&auto=format&fit=crop&q=80", url: "https://nebez.github.io/floppybird/" },
-      { id: 6, title: "Tower Building", category: "puzzle", image: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=400&auto=format&fit=crop&q=80", url: "https://iamkun.github.io/tower_game/" },
-      { id: 7, title: "Tetris Clásico", category: "puzzle", image: "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=400&auto=format&fit=crop&q=80", url: "https://chvin.github.io/react-tetris/" },
-      { id: 8, title: "Chrome Dino T-Rex", category: "arcade", image: "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=400&auto=format&fit=crop&q=80", url: "https://elgoog.im/t-rex/" },
-      { id: 9, title: "Connect 4 (4 en Línea)", category: "puzzle", image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400&auto=format&fit=crop&q=80", url: "https://kenrick95.github.io/c4/" },
-      { id: 10, title: "Frogger Arcade", category: "arcade", image: "https://images.unsplash.com/photo-1551103782-8ab07afd45c1?w=400&auto=format&fit=crop&q=80", url: "https://funhtml5games.com/frogger/index.html" },
-      { id: 11, title: "Missile Command", category: "arcade", image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=400&auto=format&fit=crop&q=80", url: "https://funhtml5games.com/missilecommand/index.html" },
-      { id: 12, title: "Clumsy Bird", category: "accion", image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=400&auto=format&fit=crop&q=80", url: "https://ellisonleao.github.io/clumsy-bird/" },
-      { id: 13, title: "Bubble Bobble", category: "arcade", image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&auto=format&fit=crop&q=80", url: "https://funhtml5games.com/bubblebobble/index.html" },
-      { id: 14, title: "OutRun Highway", category: "carreras", image: "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?w=400&auto=format&fit=crop&q=80", url: "https://funhtml5games.com/outrun/index.html" },
-      { id: 15, title: "1000 Block Puzzle", category: "puzzle", image: "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=400&auto=format&fit=crop&q=80", url: "https://funhtml5games.com/1000blocks/index.html" },
-      { id: 16, title: "Jewel Quest", category: "puzzle", image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400&auto=format&fit=crop&q=80", url: "https://funhtml5games.com/jewels/index.html" },
-      { id: 17, title: "Sudoku Retro", category: "puzzle", image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=400&auto=format&fit=crop&q=80", url: "https://funhtml5games.com/sudoku/index.html" },
-      { id: 18, title: "Hextris", category: "puzzle", image: "https://images.unsplash.com/photo-1563089145-599997674d42?w=400&auto=format&fit=crop&q=80", url: "https://hextris.io/" },
-      { id: 19, title: "Slope Runner 3D", category: "carreras", image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&auto=format&fit=crop&q=80", url: "https://slope-game.github.io/" },
-      { id: 20, title: "Doodle Jump HTML5", category: "arcade", image: "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=400&auto=format&fit=crop&q=80", url: "https://bcoll.github.io/doodle-jump/" },
-      { id: 21, title: "Color Switch HTML5", category: "arcade", image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400&auto=format&fit=crop&q=80", url: "https://bubblesshooter.github.io/colorswitch/" },
-      { id: 22, title: "HexGL Sci-Fi Racer", category: "carreras", image: "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?w=400&auto=format&fit=crop&q=80", url: "https://hexgl.bkcore.com/play/" },
-      { id: 23, title: "Duck Hunt Retro", category: "arcade", image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=400&auto=format&fit=crop&q=80", url: "https://matt-kearney.github.io/duck-hunt/" },
-      { id: 24, title: "Cut The Rope Time Travel", category: "puzzle", image: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=400&auto=format&fit=crop&q=80", url: "https://games.crazygames.com/en_US/cut-the-rope-time-travel/index.html" },
-      { id: 25, title: "Minesweeper (Buscaminas)", category: "puzzle", image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=400&auto=format&fit=crop&q=80", url: "https://minesweeper.online/" },
-      { id: 26, title: "Retro Racer Canvas", category: "carreras", image: "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=400&auto=format&fit=crop&q=80", url: "https://jakesgordon.github.io/javascript-racer/" },
-      { id: 27, title: "Box2D Physics Sandbox", category: "puzzle", image: "https://images.unsplash.com/photo-1579373903781-fd5c0c30c4cd?w=400&auto=format&fit=crop&q=80", url: "https://schteppe.github.io/cannon.js/demos/rigidVehicle.html" },
-      { id: 28, title: "Z-Type Typing Shooter", category: "accion", image: "https://images.unsplash.com/photo-1508614589041-895b88991e3e?w=400&auto=format&fit=crop&q=80", url: "https://phoboslab.org/ztype/" },
-      { id: 29, title: "Core Arcade Shooter", category: "arcade", image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&auto=format&fit=crop&q=80", url: "https://brm.io/matter-js/demo/#ballPool" },
-      { id: 30, title: "Biolab Disaster", category: "accion", image: "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=400&auto=format&fit=crop&q=80", url: "https://playbiolab.com/" }
+      {
+        id: 1,
+        title: "Subway Surfers",
+        category: "accion",
+        image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&auto=format&fit=crop&q=80",
+        url: "games/subway-surfers/index.html" // Ruta local en tu GitHub
+      },
+      {
+        id: 2,
+        title: "Moto X3M",
+        category: "carreras",
+        image: "https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=400&auto=format&fit=crop&q=80",
+        url: "games/moto-x3m/index.html" // Ruta local en tu GitHub
+      },
+      {
+        id: 3,
+        title: "Slope 3D",
+        category: "carreras",
+        image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=400&auto=format&fit=crop&q=80",
+        url: "https://slope-game.github.io/"
+      },
+      {
+        id: 4,
+        title: "Cookie Clicker",
+        category: "casual",
+        image: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=400&auto=format&fit=crop&q=80",
+        url: "https://orteil.dashnet.org/cookieclicker/"
+      },
+      {
+        id: 5,
+        title: "Super Mario HTML5",
+        category: "retro",
+        image: "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=400&auto=format&fit=crop&q=80",
+        url: "https://chanmeng666.github.io/super-mario-makey-makey/"
+      },
+      {
+        id: 6,
+        title: "HexGL Sci-Fi Racing",
+        category: "carreras",
+        image: "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?w=400&auto=format&fit=crop&q=80",
+        url: "https://hexgl.bkcore.com/play/"
+      },
+      {
+        id: 7,
+        title: "Doodle Jump",
+        category: "casual",
+        image: "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=400&auto=format&fit=crop&q=80",
+        url: "https://bcoll.github.io/doodle-jump/"
+      },
+      {
+        id: 8,
+        title: "Flappy Bird",
+        category: "casual",
+        image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400&auto=format&fit=crop&q=80",
+        url: "https://nebez.github.io/floppybird/"
+      },
+      {
+        id: 9,
+        title: "Pacman Classic",
+        category: "retro",
+        image: "https://images.unsplash.com/photo-1579373903781-fd5c0c30c4cd?w=400&auto=format&fit=crop&q=80",
+        url: "https://freepacman.org/"
+      },
+      {
+        id: 10,
+        title: "Chrome Dino T-Rex",
+        category: "casual",
+        image: "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=400&auto=format&fit=crop&q=80",
+        url: "https://elgoog.im/t-rex/"
+      }
     ];
 
     const grid = document.getElementById('gamesGrid');
