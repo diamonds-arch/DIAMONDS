@@ -29,6 +29,7 @@
       flex-direction: column;
     }
 
+    /* Navbar */
     header {
       background: rgba(18, 25, 39, 0.95);
       position: sticky;
@@ -71,6 +72,7 @@
       border-color: var(--primary);
     }
 
+    /* Categorías */
     .categories {
       display: flex;
       gap: 0.8rem;
@@ -95,6 +97,7 @@
       color: #fff;
     }
 
+    /* Grid de Juegos */
     main {
       flex: 1;
       padding: 1rem 2rem 3rem;
@@ -141,6 +144,7 @@
       text-align: center;
     }
 
+    /* Modal de Juego */
     .modal {
       display: none;
       position: fixed;
@@ -161,7 +165,7 @@
       width: 90%;
       max-width: 960px;
       height: 80vh;
-      background: #000;
+      background: #ffffff;
       border-radius: 12px;
       overflow: hidden;
       display: flex;
@@ -175,6 +179,7 @@
       align-items: center;
       padding: 0.8rem 1.2rem;
       background: var(--card-bg);
+      color: #ffffff;
     }
 
     .close-btn {
@@ -189,6 +194,7 @@
       width: 100%;
       flex: 1;
       border: none;
+      background-color: #ffffff;
     }
   </style>
 </head>
@@ -218,7 +224,7 @@
         <h3 id="modalTitle">Título del Juego</h3>
         <button class="close-btn" id="closeModal">&times;</button>
       </div>
-      <iframe id="gameFrame" src="" allowfullscreen="true" allow="gamepad; autoplay; fullscreen; cross-origin-isolated"></iframe>
+      <iframe id="gameFrame" src="" allowfullscreen allow="autoplay; fullscreen; gamepad"></iframe>
     </div>
   </div>
 
@@ -226,87 +232,87 @@
     const games = [
       {
         id: 1,
-        title: "Subway Surfers",
-        category: "accion",
-        image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=300&q=80",
-        url: "https://subwaysurfersgame.github.io/"
-      },
-      {
-        id: 2,
-        title: "Super Mario (A = Correr, S = Saltar)",
+        title: "Super Mario HTML5",
         category: "accion",
         image: "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=300&q=80",
         url: "https://chanmeng666.github.io/super-mario-makey-makey/"
       },
       {
-        id: 3,
+        id: 2,
         title: "Pacman Classic",
         category: "arcade",
         image: "https://images.unsplash.com/photo-1579373903781-fd5c0c30c4cd?w=300&q=80",
         url: "https://freepacman.org/"
       },
       {
-        id: 4,
-        title: "2048",
+        id: 3,
+        title: "2048 Official",
         category: "puzzle",
         image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=300&q=80",
         url: "https://gabrielecirulli.github.io/2048/"
       },
       {
-        id: 5,
+        id: 4,
         title: "Flappy Bird",
         category: "arcade",
         image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=300&q=80",
         url: "https://nebez.github.io/floppybird/"
       },
       {
-        id: 6,
-        title: "Tower Building",
+        id: 5,
+        title: "Tower Building (Torre)",
         category: "puzzle",
         image: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=300&q=80",
         url: "https://iamkun.github.io/tower_game/"
       },
       {
-        id: 7,
-        title: "Snake Classic",
+        id: 6,
+        title: "Snake Game Classic",
         category: "arcade",
         image: "https://images.unsplash.com/photo-1628277613967-6abca504d0ac?w=300&q=80",
-        url: "https://rembound.com/files/games/snake-game/index.html"
+        url: "https://patorjk.com/games/snake/"
+      },
+      {
+        id: 7,
+        title: "Chrome Dino T-Rex",
+        category: "arcade",
+        image: "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=300&q=80",
+        url: "https://elgoog.im/t-rex/"
       },
       {
         id: 8,
-        title: "Tic Tac Toe AI",
+        title: "Tetris Clásico",
         category: "puzzle",
-        image: "https://images.unsplash.com/photo-1611996575749-79a3a250f948?w=300&q=80",
-        url: "https://playtictactoe.org/"
+        image: "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=300&q=80",
+        url: "https://chvin.github.io/react-tetris/"
       },
       {
         id: 9,
-        title: "Hextris",
-        category: "arcade",
-        image: "https://images.unsplash.com/photo-1551103782-8ab07afd45c1?w=300&q=80",
-        url: "https://balldontlie.github.io/hextris/"
-      },
-      {
-        id: 10,
-        title: "Canvas Tetris",
-        category: "puzzle",
-        image: "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=300&q=80",
-        url: "https://skid.github.io/canvas-tetris/"
-      },
-      {
-        id: 11,
-        title: "Chrome Dino Runner",
-        category: "arcade",
-        image: "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=300&q=80",
-        url: "https://wayou.github.io/t-rex-runner/"
-      },
-      {
-        id: 12,
         title: "Connect 4 (4 en Línea)",
         category: "puzzle",
         image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=300&q=80",
         url: "https://kenrick95.github.io/c4/"
+      },
+      {
+        id: 10,
+        title: "Clumsy Bird (Acción)",
+        category: "accion",
+        image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=300&q=80",
+        url: "https://ellisonleao.github.io/clumsy-bird/"
+      },
+      {
+        id: 11,
+        title: "Tic Tac Toe (Tres en Raya)",
+        category: "puzzle",
+        image: "https://images.unsplash.com/photo-1611996575749-79a3a250f948?w=300&q=80",
+        url: "https://beaucarnes.github.io/tictactoe/"
+      },
+      {
+        id: 12,
+        title: "Breakout (Rompebloques)",
+        category: "arcade",
+        image: "https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?w=300&q=80",
+        url: "https://straker.github.io/phaser-breakout/"
       }
     ];
 
@@ -340,10 +346,9 @@
       modalTitle.textContent = game.title;
       gameFrame.src = game.url;
       modal.classList.add('open');
-      // Enfocar automáticamente el iframe para que el teclado funcione al instante
       setTimeout(() => {
         gameFrame.focus();
-      }, 500);
+      }, 400);
     }
 
     closeModal.addEventListener('click', () => {
