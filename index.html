@@ -29,7 +29,6 @@
       flex-direction: column;
     }
 
-    /* Navbar */
     header {
       background: rgba(18, 25, 39, 0.95);
       position: sticky;
@@ -72,7 +71,6 @@
       border-color: var(--primary);
     }
 
-    /* Categorías */
     .categories {
       display: flex;
       gap: 0.8rem;
@@ -97,7 +95,6 @@
       color: #fff;
     }
 
-    /* Grid de Juegos */
     main {
       flex: 1;
       padding: 1rem 2rem 3rem;
@@ -138,13 +135,12 @@
       left: 0;
       right: 0;
       padding: 0.5rem;
-      background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.4) 60%, transparent);
       font-size: 0.85rem;
       font-weight: 600;
       text-align: center;
     }
 
-    /* Modal de Juego */
     .modal {
       display: none;
       position: fixed;
@@ -165,7 +161,7 @@
       width: 90%;
       max-width: 960px;
       height: 80vh;
-      background: #ffffff;
+      background: #000;
       border-radius: 12px;
       overflow: hidden;
       display: flex;
@@ -218,13 +214,12 @@
       width: 100%;
       flex: 1;
       border: none;
-      background-color: #ffffff;
+      background-color: #000;
     }
   </style>
 </head>
 <body>
 
-  <!-- Encabezado -->
   <header>
     <a href="#" class="brand">DIAMONDS</a>
     <div class="search-bar">
@@ -232,20 +227,17 @@
     </div>
   </header>
 
-  <!-- Categorías -->
   <nav class="categories">
     <button class="cat-btn active" data-category="all">Todos</button>
-    <button class="cat-btn" data-category="accion">Acción</button>
     <button class="cat-btn" data-category="arcade">Arcade</button>
+    <button class="cat-btn" data-category="accion">Acción</button>
     <button class="cat-btn" data-category="puzzle">Puzzle</button>
   </nav>
 
-  <!-- Lista de Juegos -->
   <main>
     <div class="games-grid" id="gamesGrid"></div>
   </main>
 
-  <!-- Modal -->
   <div class="modal" id="gameModal">
     <div class="modal-content" id="modalContainer">
       <div class="modal-header">
@@ -255,7 +247,7 @@
           <button class="btn-action" id="closeModal" title="Cerrar">&times;</button>
         </div>
       </div>
-      <iframe id="gameFrame" src="" allowfullscreen allow="autoplay; fullscreen; gamepad; cross-origin-isolated"></iframe>
+      <iframe id="gameFrame" src="" allowfullscreen allow="autoplay; fullscreen; gamepad"></iframe>
     </div>
   </div>
 
@@ -263,87 +255,87 @@
     const games = [
       {
         id: 1,
-        title: "Subway Surfers",
-        category: "accion",
-        image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=300&q=80",
-        url: "https://yandex.com/games/app/96431"
+        title: "Space Invaders",
+        category: "arcade",
+        image: "https://upload.wikimedia.org/wikipedia/commons/1/15/Space_invaders_alien.png",
+        url: "https://funhtml5games.com/spaceinvaders/index.html"
       },
       {
         id: 2,
-        title: "Super Mario HTML5",
-        category: "accion",
-        image: "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=300&q=80",
-        url: "https://chanmeng666.github.io/super-mario-makey-makey/"
+        title: "Galaga Classic",
+        category: "arcade",
+        image: "https://m.media-amazon.com/images/I/71YyvP1r0OL.png",
+        url: "https://funhtml5games.com/galaga/index.html"
       },
       {
         id: 3,
-        title: "Pacman Classic",
+        title: "Missile Command",
         category: "arcade",
-        image: "https://images.unsplash.com/photo-1579373903781-fd5c0c30c4cd?w=300&q=80",
-        url: "https://freepacman.org/"
+        image: "https://upload.wikimedia.org/wikipedia/en/thumb/e/e0/Missile_command.svg/1200px-Missile_command.svg.png",
+        url: "https://funhtml5games.com/missilecommand/index.html"
       },
       {
         id: 4,
-        title: "2048 Classic",
-        category: "puzzle",
-        image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=300&q=80",
-        url: "https://hczhcz.github.io/2048/2048/"
+        title: "Pacman Classic",
+        category: "arcade",
+        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Pacman_HD.png/640px-Pacman_HD.png",
+        url: "https://freepacman.org/"
       },
       {
         id: 5,
-        title: "Flappy Bird",
-        category: "arcade",
-        image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=300&q=80",
-        url: "https://nebez.github.io/floppybird/"
+        title: "Super Mario HTML5",
+        category: "accion",
+        image: "https://upload.wikimedia.org/wikipedia/en/a/a9/MarioSMBW.png",
+        url: "https://chanmeng666.github.io/super-mario-makey-makey/"
       },
       {
         id: 6,
-        title: "Tower Building",
-        category: "puzzle",
-        image: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=300&q=80",
-        url: "https://iamkun.github.io/tower_game/"
+        title: "Flappy Bird",
+        category: "arcade",
+        image: "https://upload.wikimedia.org/wikipedia/en/0/0a/Flappy_Bird_icon.png",
+        url: "https://nebez.github.io/floppybird/"
       },
       {
         id: 7,
-        title: "Snake Game (Viborita)",
-        category: "arcade",
-        image: "https://images.unsplash.com/photo-1628277613967-6abca504d0ac?w=300&q=80",
-        url: "https://playsnake.org/"
+        title: "Tower Building",
+        category: "puzzle",
+        image: "https://raw.githubusercontent.com/iamkun/tower_game/master/assets/screenshot.png",
+        url: "https://iamkun.github.io/tower_game/"
       },
       {
         id: 8,
-        title: "Chrome Dino T-Rex",
-        category: "arcade",
-        image: "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=300&q=80",
-        url: "https://chromedino.io/"
+        title: "Tetris Clásico",
+        category: "puzzle",
+        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Tetrominoes_IJLO_STZ_flipped.svg/640px-Tetrominoes_IJLO_STZ_flipped.svg.png",
+        url: "https://chvin.github.io/react-tetris/"
       },
       {
         id: 9,
-        title: "Tetris Clásico",
-        category: "puzzle",
-        image: "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=300&q=80",
-        url: "https://chvin.github.io/react-tetris/"
+        title: "Chrome Dino T-Rex",
+        category: "arcade",
+        image: "https://upload.wikimedia.org/wikipedia/commons/a/ac/T-Rex_icon_from_Chromium.png",
+        url: "https://elgoog.im/t-rex/"
       },
       {
         id: 10,
         title: "Connect 4 (4 en Línea)",
         category: "puzzle",
-        image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=300&q=80",
-        url: "https://connect-4-game.netlify.app/"
+        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Connect_Four.svg/640px-Connect_Four.svg.png",
+        url: "https://kenrick95.github.io/c4/"
       },
       {
         id: 11,
-        title: "Tic Tac Toe (Tres en Raya)",
-        category: "puzzle",
-        image: "https://images.unsplash.com/photo-1611996575749-79a3a250f948?w=300&q=80",
-        url: "https://playtictactoe.netlify.app/"
+        title: "Frogger Arcade",
+        category: "arcade",
+        image: "https://upload.wikimedia.org/wikipedia/en/thumb/1/1c/Frogger_arcade_flyer.jpg/220px-Frogger_arcade_flyer.jpg",
+        url: "https://funhtml5games.com/frogger/index.html"
       },
       {
         id: 12,
-        title: "Breakout (Rompebloques)",
+        title: "Pong Retro",
         category: "arcade",
-        image: "https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?w=300&q=80",
-        url: "https://arcade-breakout.netlify.app/"
+        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Pong.png/640px-Pong.png",
+        url: "https://pong-2.com/"
       }
     ];
 
@@ -375,13 +367,20 @@
       });
     }
 
+    function refocusIframe() {
+      setTimeout(() => {
+        gameFrame.focus();
+        if (gameFrame.contentWindow) {
+          gameFrame.contentWindow.focus();
+        }
+      }, 150);
+    }
+
     function openGame(game) {
       modalTitle.textContent = game.title;
       gameFrame.src = game.url;
       modal.classList.add('open');
-      setTimeout(() => {
-        gameFrame.focus();
-      }, 400);
+      refocusIframe();
     }
 
     closeModal.addEventListener('click', () => {
@@ -391,6 +390,7 @@
     });
 
     fullscreenBtn.addEventListener('click', () => {
+      fullscreenBtn.blur();
       if (!document.fullscreenElement) {
         modalContainer.requestFullscreen().catch(() => {
           modalContainer.classList.toggle('fullscreen');
@@ -398,6 +398,7 @@
       } else {
         document.exitFullscreen();
       }
+      refocusIframe();
     });
 
     document.addEventListener('fullscreenchange', () => {
@@ -406,6 +407,7 @@
       } else {
         modalContainer.classList.remove('fullscreen');
       }
+      refocusIframe();
     });
 
     searchInput.addEventListener('input', (e) => {
