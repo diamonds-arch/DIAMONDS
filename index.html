@@ -231,6 +231,7 @@
   <nav class="categories">
     <button class="cat-btn active" data-category="all">Todos</button>
     <button class="cat-btn" data-category="arcade">Arcade</button>
+    <button class="cat-btn" data-category="deportes">Deportes</button>
     <button class="cat-btn" data-category="carreras">Carreras</button>
     <button class="cat-btn" data-category="puzzle">Puzzle</button>
   </nav>
@@ -254,23 +255,24 @@
 
   <script>
     const games = [
-      { id: 1, title: "Super Mario World SNES", category: "arcade", image: "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=400&auto=format&fit=crop&q=80", url: "mario.html" },
-      { id: 2, title: "Galaga NES", category: "arcade", image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&auto=format&fit=crop&q=80", url: "galaga.html" },
-      { id: 3, title: "Sonic The Hedgehog", category: "arcade", image: "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=400&auto=format&fit=crop&q=80", url: "sonic.html" },
-      { id: 4, title: "Super Metroid SNES", category: "arcade", image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=400&auto=format&fit=crop&q=80", url: "metroid.html" },
-      { id: 5, title: "Space Invaders", category: "arcade", image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&auto=format&fit=crop&q=80", url: "https://funhtml5games.com/spaceinvaders/index.html" },
-      { id: 6, title: "Asteroids Classic", category: "arcade", image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=400&auto=format&fit=crop&q=80", url: "https://freeasteroids.org/" },
-      { id: 7, title: "Donkey Kong NES", category: "arcade", image: "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=400&auto=format&fit=crop&q=80", url: "https://funhtml5games.com/donkeykong/index.html" },
-      { id: 8, title: "Bubble Bobble", category: "arcade", image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&auto=format&fit=crop&q=80", url: "https://funhtml5games.com/bubblebobble/index.html" },
-      { id: 9, title: "Arkanoid Classic", category: "arcade", image: "https://images.unsplash.com/photo-1579373903781-fd5c0c30c4cd?w=400&auto=format&fit=crop&q=80", url: "https://funhtml5games.com/breakout/index.html" },
-      { id: 10, title: "OutRun Highway", category: "carreras", image: "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?w=400&auto=format&fit=crop&q=80", url: "https://funhtml5games.com/outrun/index.html" },
-      { id: 11, title: "Biolab Disaster", category: "arcade", image: "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=400&auto=format&fit=crop&q=80", url: "https://playbiolab.com/" },
-      { id: 12, title: "Flappy Bird", category: "arcade", image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400&auto=format&fit=crop&q=80", url: "https://nebez.github.io/floppybird/" },
-      { id: 13, title: "Tetris Clásico", category: "puzzle", image: "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=400&auto=format&fit=crop&q=80", url: "https://chvin.github.io/react-tetris/" },
-      { id: 14, title: "Breaklock Puzzle", category: "puzzle", image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400&auto=format&fit=crop&q=80", url: "https://maxwellito.github.io/breaklock/" },
-      { id: 15, title: "Connect 4", category: "puzzle", image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400&auto=format&fit=crop&q=80", url: "https://kenrick95.github.io/c4/" },
-      { id: 16, title: "Frogger Arcade", category: "arcade", image: "https://images.unsplash.com/photo-1551103782-8ab07afd45c1?w=400&auto=format&fit=crop&q=80", url: "https://funhtml5games.com/frogger/index.html" },
-      { id: 17, title: "Clumsy Bird", category: "arcade", image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=400&auto=format&fit=crop&q=80", url: "https://ellisonleao.github.io/clumsy-bird/" }
+      { id: 1, title: "FIFA: Road to World Cup 98", category: "deportes", image: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=400&auto=format&fit=crop&q=80", url: "fifa98.html" },
+      { id: 2, title: "Super Mario World SNES", category: "arcade", image: "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=400&auto=format&fit=crop&q=80", url: "mario.html" },
+      { id: 3, title: "Galaga NES", category: "arcade", image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&auto=format&fit=crop&q=80", url: "galaga.html" },
+      { id: 4, title: "Sonic The Hedgehog", category: "arcade", image: "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=400&auto=format&fit=crop&q=80", url: "sonic.html" },
+      { id: 5, title: "Super Metroid SNES", category: "arcade", image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=400&auto=format&fit=crop&q=80", url: "metroid.html" },
+      { id: 6, title: "Space Invaders", category: "arcade", image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&auto=format&fit=crop&q=80", url: "https://funhtml5games.com/spaceinvaders/index.html" },
+      { id: 7, title: "Asteroids Classic", category: "arcade", image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=400&auto=format&fit=crop&q=80", url: "https://freeasteroids.org/" },
+      { id: 8, title: "Donkey Kong NES", category: "arcade", image: "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=400&auto=format&fit=crop&q=80", url: "https://funhtml5games.com/donkeykong/index.html" },
+      { id: 9, title: "Bubble Bobble", category: "arcade", image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&auto=format&fit=crop&q=80", url: "https://funhtml5games.com/bubblebobble/index.html" },
+      { id: 10, title: "Arkanoid Classic", category: "arcade", image: "https://images.unsplash.com/photo-1579373903781-fd5c0c30c4cd?w=400&auto=format&fit=crop&q=80", url: "https://funhtml5games.com/breakout/index.html" },
+      { id: 11, title: "OutRun Highway", category: "carreras", image: "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?w=400&auto=format&fit=crop&q=80", url: "https://funhtml5games.com/outrun/index.html" },
+      { id: 12, title: "Biolab Disaster", category: "arcade", image: "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=400&auto=format&fit=crop&q=80", url: "https://playbiolab.com/" },
+      { id: 13, title: "Flappy Bird", category: "arcade", image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400&auto=format&fit=crop&q=80", url: "https://nebez.github.io/floppybird/" },
+      { id: 14, title: "Tetris Clásico", category: "puzzle", image: "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=400&auto=format&fit=crop&q=80", url: "https://chvin.github.io/react-tetris/" },
+      { id: 15, title: "Breaklock Puzzle", category: "puzzle", image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400&auto=format&fit=crop&q=80", url: "https://maxwellito.github.io/breaklock/" },
+      { id: 16, title: "Connect 4", category: "puzzle", image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400&auto=format&fit=crop&q=80", url: "https://kenrick95.github.io/c4/" },
+      { id: 17, title: "Frogger Arcade", category: "arcade", image: "https://images.unsplash.com/photo-1551103782-8ab07afd45c1?w=400&auto=format&fit=crop&q=80", url: "https://funhtml5games.com/frogger/index.html" },
+      { id: 18, title: "Clumsy Bird", category: "arcade", image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=400&auto=format&fit=crop&q=80", url: "https://ellisonleao.github.io/clumsy-bird/" }
     ];
 
     const grid = document.getElementById('gamesGrid');
