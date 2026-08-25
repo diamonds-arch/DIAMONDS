@@ -37,8 +37,10 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 1rem 2rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 1.2rem 2rem;
+      border-bottom: 2px solid rgba(0, 112, 243, 0.2);
+      gap: 1.5rem;
+      flex-wrap: wrap;
     }
 
     .brand-wrap {
@@ -48,7 +50,7 @@
     }
 
     .brand {
-      font-size: 1.6rem;
+      font-size: 1.8rem;
       font-weight: 900;
       letter-spacing: 2px;
       color: #fff;
@@ -58,64 +60,111 @@
     .badge-sega {
       background: var(--primary);
       color: #fff;
-      font-size: 0.75rem;
+      font-size: 0.8rem;
       font-weight: 800;
-      padding: 3px 8px;
+      padding: 4px 10px;
       border-radius: 6px;
       letter-spacing: 1px;
     }
 
+    /* BOTONES DE NAVEGACIÓN GRANDES Y LLAMATIVOS */
     .nav-links {
       display: flex;
-      gap: 15px;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
     }
 
-    .nav-link {
-      color: var(--text-muted);
+    .nav-btn {
+      color: #ffffff;
       text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 600;
-      transition: color 0.2s;
+      font-size: 0.95rem;
+      font-weight: 700;
+      padding: 0.55rem 1.1rem;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      transition: all 0.25s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
 
-    .nav-link:hover {
-      color: #fff;
+    .nav-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    }
+
+    .nav-btn.home-btn:hover {
+      background: #2f3542;
+      border-color: #747d8c;
+    }
+
+    .nav-btn.nes-btn:hover {
+      background: rgba(255, 71, 87, 0.2);
+      border-color: #ff4757;
+      color: #ff4757;
+      box-shadow: 0 0 15px rgba(255, 71, 87, 0.4);
+    }
+
+    .nav-btn.snes-btn:hover {
+      background: rgba(165, 94, 234, 0.2);
+      border-color: #a55eea;
+      color: #a55eea;
+      box-shadow: 0 0 15px rgba(165, 94, 234, 0.4);
+    }
+
+    .nav-btn.sega-btn {
+      background: rgba(0, 112, 243, 0.25);
+      border-color: var(--primary);
+      color: #50e3c2;
+      box-shadow: 0 0 15px rgba(0, 112, 243, 0.35);
+    }
+
+    .nav-btn.gba-btn:hover {
+      background: rgba(46, 213, 115, 0.2);
+      border-color: #2ed573;
+      color: #2ed573;
+      box-shadow: 0 0 15px rgba(46, 213, 115, 0.4);
     }
 
     .search-bar {
-      flex: 0 1 350px;
+      flex: 0 1 320px;
     }
 
     .search-bar input {
       width: 100%;
-      padding: 0.6rem 1.2rem;
+      padding: 0.65rem 1.2rem;
       border-radius: 20px;
       border: 1px solid rgba(255, 255, 255, 0.15);
       background-color: var(--card-bg);
       color: var(--text-color);
       outline: none;
+      font-size: 0.9rem;
       transition: 0.2s;
     }
 
     .search-bar input:focus {
       border-color: var(--primary);
+      box-shadow: 0 0 10px rgba(0, 112, 243, 0.3);
     }
 
     main {
       flex: 1;
-      padding: 2rem;
+      padding: 2.5rem 2rem;
       max-width: 1200px;
       margin: 0 auto;
       width: 100%;
     }
 
     .section-title {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       margin-bottom: 1.5rem;
       color: #e2e8f0;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
+      font-weight: 700;
     }
 
     .games-grid {
@@ -140,7 +189,7 @@
     .game-card:hover {
       transform: translateY(-6px) scale(1.02);
       border-color: var(--primary);
-      box-shadow: 0 10px 25px rgba(0, 112, 243, 0.3);
+      box-shadow: 0 10px 25px rgba(0, 112, 243, 0.35);
     }
 
     .game-card img {
@@ -155,9 +204,9 @@
       bottom: 0;
       left: 0;
       right: 0;
-      padding: 0.6rem;
+      padding: 0.7rem;
       background: linear-gradient(to top, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.5) 60%, transparent);
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       font-weight: 700;
       text-align: center;
     }
@@ -244,15 +293,17 @@
   <header>
     <div class="brand-wrap">
       <a href="index.html" class="brand">DIAMONDS</a>
-      <span class="badge-sega">EMULATOR SEGA GENESIS</span>
+      <span class="badge-sega">SEGA GENESIS</span>
     </div>
 
-    <div class="nav-links">
-      <a href="index.html" class="nav-link">Inicio</a>
-      <a href="nes.html" class="nav-link">NES</a>
-      <a href="snes.html" class="nav-link">SNES</a>
-      <a href="gba.html" class="nav-link">Game Boy</a>
-    </div>
+    <!-- Menú de Consolas en Botones Grandes -->
+    <nav class="nav-links">
+      <a href="index.html" class="nav-btn home-btn">🏠 Inicio</a>
+      <a href="nes.html" class="nav-btn nes-btn">🔴 NES</a>
+      <a href="snes.html" class="nav-btn snes-btn">🟣 SNES</a>
+      <a href="sega.html" class="nav-btn sega-btn">⚡ Sega Genesis</a>
+      <a href="gba.html" class="nav-btn gba-btn">🟢 Game Boy</a>
+    </nav>
 
     <div class="search-bar">
       <input type="text" id="searchInput" placeholder="Buscar juego de Sega...">
