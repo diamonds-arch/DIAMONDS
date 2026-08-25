@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DIAMONDS - Emulator Super Nintendo (SNES)</title>
+  <style>
+    :root {
+      --bg-color: #0d0f17;
+      --card-bg: #151828;
+      --primary: #8e44ad;
+      --accent: #a55eea;
+      --text-color: #ffffff;
+      --text-muted: #8b949e;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: rgba(13, 15, 23, 0.95);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 2rem;
+      border-bottom: 2px solid rgba(165, 94, 234, 0.25);
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand {
+      font-size: 1.8rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .badge-snes {
+      background: var(--primary);
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 6px;
+      letter-spacing: 1px;
+    }
+
+    /* BOTONES DE NAVEGACIÓN GRANDES */
+    .nav-links {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .nav-btn {
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 700;
+      padding: 0.55rem 1.1rem;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      transition: all 0.25s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    }
+
+    .nav-btn.home-btn:hover {
+      background: #2f3542;
+      border-color: #747d8c;
+    }
+
+    .nav-btn.nes-btn:hover {
+      background: rgba(255, 71, 87, 0.2);
+      border-color: #ff4757;
+      color: #ff4757;
+      box-shadow: 0 0 15px rgba(255, 71, 87, 0.4);
+    }
+
+    .nav-btn.snes-btn {
+      background: rgba(165, 94, 234, 0.25);
+      border-color: var(--accent);
+      color: #e0b0ff;
+      box-shadow: 0 0 15px rgba(165, 94, 234, 0.35);
+    }
+
+    .nav-btn.sega-btn:hover {
+      background: rgba(0, 112, 243, 0.2);
+      border-color: #0070f3;
+      color: #50e3c2;
+      box-shadow: 0 0 15px rgba(0, 112, 243, 0.4);
+    }
+
+    .nav-btn.gba-btn:hover {
+      background: rgba(46, 213, 115, 0.2);
+      border-color: #2ed573;
+      color: #2ed573;
+      box-shadow: 0 0 15px rgba(46, 213, 115, 0.4);
+    }
+
+    .search-bar {
+      flex: 0 1 320px;
+    }
+
+    .search-bar input {
+      width: 100%;
+      padding: 0.65rem 1.2rem;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background-color: var(--card-bg);
+      color: var(--text-color);
+      outline: none;
+      font-size: 0.9rem;
+      transition: 0.2s;
+    }
+
+    .search-bar input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 10px rgba(165, 94, 234, 0.3);
+    }
+
+    main {
+      flex: 1;
+      padding: 2.5rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .section-title {
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+      color: #e2e8f0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+    }
+
+    .games-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .game-card {
+      background-color: var(--card-bg);
+      border-radius: 16px;
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      aspect-ratio: 1 / 1;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .game-card:hover {
+      transform: translateY(-6px) scale(1.02);
+      border-color: var(--accent);
+      box-shadow: 0 10px 25px rgba(165, 94, 234, 0.35);
+    }
+
+    .game-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .game-title {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 0.7rem;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.5) 60%, transparent);
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.9);
+      z-index: 1000;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .modal.open {
+      display: flex;
+    }
+
+    .modal-content {
+      width: 90%;
+      max-width: 900px;
+      height: 80vh;
+      background: #000;
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 0 35px rgba(165, 94, 234, 0.4);
+      position: relative;
+    }
+
+    .modal-content.fullscreen {
+      width: 100vw !important;
+      max-width: 100vw !important;
+      height: 100vh !important;
+      border-radius: 0 !important;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.8rem 1.2rem;
+      background: #151828;
+      color: #fff;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-action {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.3rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px;
+      transition: color 0.2s;
+    }
+
+    .btn-action:hover {
+      color: var(--accent);
+    }
+
+    .modal-content iframe {
+      width: 100%;
+      flex: 1;
+      border: none;
+      background-color: #000;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="brand-wrap">
+      <a href="index.html" class="brand">DIAMONDS</a>
+      <span class="badge-snes">SNES 16-BIT</span>
+    </div>
+
+    <!-- Menú de Consolas -->
+    <nav class="nav-links">
+      <a href="index.html" class="nav-btn home-btn">🏠 Inicio</a>
+      <a href="nes.html" class="nav-btn nes-btn">🔴 NES</a>
+      <a href="snes.html" class="nav-btn snes-btn">🟣 SNES</a>
+      <a href="sega.html" class="nav-btn sega-btn">⚡ Sega Genesis</a>
+      <a href="gba.html" class="nav-btn gba-btn">🟢 Game Boy</a>
+    </nav>
+
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Buscar juego de SNES...">
+    </div>
+  </header>
+
+  <main>
+    <div class="section-title">🟣 Catálogo de Super Nintendo Entertainment System</div>
+    <div class="games-grid" id="gamesGrid"></div>
+  </main>
+
+  <div class="modal" id="gameModal">
+    <div class="modal-content" id="modalContainer">
+      <div class="modal-header">
+        <h3 id="modalTitle">SNES Player</h3>
+        <div class="header-actions">
+          <button class="btn-action" id="fullscreenBtn" title="Pantalla completa">⛶</button>
+          <button class="btn-action" id="closeModal" title="Cerrar">&times;</button>
+        </div>
+      </div>
+      <iframe id="gameFrame" src="" allowfullscreen allow="autoplay; fullscreen; gamepad"></iframe>
+    </div>
+  </div>
+
+  <script>
+    const snesGames = [
+      { id: 1, title: "Super Mario World", image: "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=400&auto=format&fit=crop&q=80", url: "mario.html" },
+      { id: 2, title: "Super Metroid", image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=400&auto=format&fit=crop&q=80", url: "metroid.html" }
+    ];
+
+    const grid = document.getElementById('gamesGrid');
+    const modal = document.getElementById('gameModal');
+    const modalContainer = document.getElementById('modalContainer');
+    const gameFrame = document.getElementById('gameFrame');
+    const modalTitle = document.getElementById('modalTitle');
+    const closeModal = document.getElementById('closeModal');
+    const fullscreenBtn = document.getElementById('fullscreenBtn');
+    const searchInput = document.getElementById('searchInput');
+
+    function renderGames(list) {
+      grid.innerHTML = '';
+      if (list.length === 0) {
+        grid.innerHTML = '<p style="color: var(--text-muted); grid-column: 1/-1;">No se encontraron juegos de SNES.</p>';
+        return;
+      }
+      list.forEach(game => {
+        const card = document.createElement('div');
+        card.className = 'game-card';
+        card.innerHTML = `
+          <img src="${game.image}" alt="${game.title}" loading="lazy">
+          <div class="game-title">${game.title}</div>
+        `;
+        card.addEventListener('click', () => {
+          modalTitle.textContent = game.title + " (SNES)";
+          gameFrame.src = game.url;
+          modal.classList.add('open');
+          setTimeout(() => {
+            gameFrame.focus();
+            if (gameFrame.contentWindow) gameFrame.contentWindow.focus();
+          }, 150);
+        });
+        grid.appendChild(card);
+      });
+    }
+
+    closeModal.addEventListener('click', () => {
+      if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
+      modal.classList.remove('open');
+      modalContainer.classList.remove('fullscreen');
+      gameFrame.src = '';
+    });
+
+    fullscreenBtn.addEventListener('click', () => {
+      fullscreenBtn.blur();
+      if (!document.fullscreenElement) {
+        modalContainer.requestFullscreen().catch(() => {
+          modalContainer.classList.toggle('fullscreen');
+        });
+      } else {
+        document.exitFullscreen();
+      }
+    });
+
+    searchInput.addEventListener('input', (e) => {
+      const term = e.target.value.toLowerCase();
+      renderGames(snesGames.filter(g => g.title.toLowerCase().includes(term)));
+    });
+
+    renderGames(snesGames);
+  </script>
+</body>
+</html>
