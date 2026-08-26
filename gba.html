@@ -350,8 +350,14 @@
   </div>
 
   <script>
-    // Agrega tus juegos de GBA aquí conforme subas los archivos
-    const gbaGames = [];
+    const gbaGames = [
+      { 
+        id: 1, 
+        title: "Pokémon Rubí", 
+        image: "https://images.launchbox-app.com/02a5c48b-3db4-469b-980b-fb3e9508ae91.jpg", 
+        url: "ruby.html" 
+      }
+    ];
 
     const grid = document.getElementById('gamesGrid');
     const modal = document.getElementById('gameModal');
@@ -365,7 +371,7 @@
     function renderGames(list) {
       grid.innerHTML = '';
       if (list.length === 0) {
-        grid.innerHTML = '<p style="color: var(--text-muted); grid-column: 1/-1; text-align: center; padding: 2rem;">Próximamente títulos de Game Boy Advance.</p>';
+        grid.innerHTML = '<p style="color: var(--text-muted); grid-column: 1/-1; text-align: center; padding: 2rem;">No se encontraron juegos de GBA.</p>';
         return;
       }
       list.forEach(game => {
