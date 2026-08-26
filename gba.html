@@ -350,12 +350,8 @@
   </div>
 
   <script>
-    const gbaGames = [
-      { id: 1, title: "Pokemon Emerald", image: "https://images.launchbox-app.com/dfeb305c-cf31-401d-b8d4-5da30932bb83.jpg", url: "emerald.html" },
-      { id: 2, title: "Pokemon FireRed", image: "https://images.launchbox-app.com/39ff1253-559d-47be-b1e0-c3d3a01ffbe6.jpg", url: "firered.html" },
-      { id: 3, title: "The Legend of Zelda: The Minish Cap", image: "https://images.launchbox-app.com/492c7308-4107-425c-a579-242861c83df6.jpg", url: "minishcap.html" },
-      { id: 4, title: "Metroid Fusion", image: "https://images.launchbox-app.com/13d10078-ebf2-491c-99d9-ae4ba88c1c4f.jpg", url: "fusion.html" }
-    ];
+    // Agrega tus juegos de GBA aquí conforme subas los archivos
+    const gbaGames = [];
 
     const grid = document.getElementById('gamesGrid');
     const modal = document.getElementById('gameModal');
@@ -369,7 +365,7 @@
     function renderGames(list) {
       grid.innerHTML = '';
       if (list.length === 0) {
-        grid.innerHTML = '<p style="color: var(--text-muted); grid-column: 1/-1;">No se encontraron juegos de GBA.</p>';
+        grid.innerHTML = '<p style="color: var(--text-muted); grid-column: 1/-1; text-align: center; padding: 2rem;">Próximamente títulos de Game Boy Advance.</p>';
         return;
       }
       list.forEach(game => {
