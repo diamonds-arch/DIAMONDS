@@ -6,12 +6,12 @@
   <title>DIAMONDS - Emulator SNES</title>
   <style>
     :root {
-      --bg-color: #0d0f17;
-      --card-bg: #151828;
-      --primary: #8e44ad;
-      --accent: #a55eea;
+      --bg-color: #0f141f;
+      --card-bg: #182235;
+      --primary: #a55eea;
+      --accent: #2ed573;
       --text-color: #ffffff;
-      --text-muted: #8b949e;
+      --text-muted: #8c9fb5;
     }
 
     * {
@@ -30,7 +30,7 @@
     }
 
     header {
-      background: rgba(13, 15, 23, 0.95);
+      background: rgba(15, 20, 31, 0.95);
       position: sticky;
       top: 0;
       z-index: 100;
@@ -57,7 +57,7 @@
       text-decoration: none;
     }
 
-    .badge-snes {
+    .badge-console {
       background: var(--primary);
       color: #fff;
       font-size: 0.8rem;
@@ -97,14 +97,14 @@
     .nav-btn.nes-btn:hover {
       background: rgba(255, 71, 87, 0.2);
       border-color: #ff4757;
-      color: #ff4757;
+      color: #ff6b81;
       box-shadow: 0 0 15px rgba(255, 71, 87, 0.4);
     }
 
     .nav-btn.snes-btn {
       background: rgba(165, 94, 234, 0.25);
-      border-color: var(--accent);
-      color: #e0b0ff;
+      border-color: var(--primary);
+      color: #d1a8ff;
       box-shadow: 0 0 15px rgba(165, 94, 234, 0.35);
     }
 
@@ -139,7 +139,7 @@
     }
 
     .search-bar input:focus {
-      border-color: var(--accent);
+      border-color: var(--primary);
       box-shadow: 0 0 10px rgba(165, 94, 234, 0.3);
     }
 
@@ -182,7 +182,7 @@
 
     .game-card:hover {
       transform: translateY(-6px) scale(1.02);
-      border-color: var(--accent);
+      border-color: var(--primary);
       box-shadow: 0 10px 25px rgba(165, 94, 234, 0.35);
     }
 
@@ -203,6 +203,28 @@
       font-size: 0.9rem;
       font-weight: 700;
       text-align: center;
+    }
+
+    /* Adsterra Container */
+    .ad-wrapper {
+      margin-top: 3rem;
+      padding: 1.5rem;
+      background: rgba(24, 34, 53, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .ad-tag {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--text-muted);
+      margin-bottom: 0.8rem;
     }
 
     /* Modal */
@@ -247,7 +269,7 @@
       justify-content: space-between;
       align-items: center;
       padding: 0.8rem 1.2rem;
-      background: #151828;
+      background: #182235;
       color: #fff;
     }
 
@@ -271,7 +293,7 @@
     }
 
     .btn-action:hover {
-      color: var(--accent);
+      color: var(--primary);
     }
 
     .modal-content iframe {
@@ -287,7 +309,7 @@
   <header>
     <div class="brand-wrap">
       <a href="nes.html" class="brand">DIAMONDS</a>
-      <span class="badge-snes">SNES 16-BIT</span>
+      <span class="badge-console">EMULATOR SNES</span>
     </div>
 
     <nav class="nav-links">
@@ -303,8 +325,15 @@
   </header>
 
   <main>
-    <div class="section-title">🟣 Catálogo de Super Nintendo Entertainment System</div>
+    <div class="section-title">🕹️ Catálogo de Super Nintendo (SNES)</div>
     <div class="games-grid" id="gamesGrid"></div>
+
+    <!-- ANUNCIO ADSTERRA -->
+    <div class="ad-wrapper">
+      <div class="ad-tag">Publicidad Patrocinada</div>
+      <script async="async" data-cfasync="false" src="https://pl31042827.profitableratecpmnetwork.com/f39ca1dab3c6020bea8bd186bd796ce9/invoke.js"></script>
+      <div id="container-f39ca1dab3c6020bea8bd186bd796ce9"></div>
+    </div>
   </main>
 
   <div class="modal" id="gameModal">
@@ -322,8 +351,10 @@
 
   <script>
     const snesGames = [
-      { id: 1, title: "Super Mario World", image: "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=400&auto=format&fit=crop&q=80", url: "mario.html" },
-      { id: 2, title: "Super Metroid", image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=400&auto=format&fit=crop&q=80", url: "metroid.html" }
+      { id: 1, title: "Super Mario World", image: "https://images.launchbox-app.com/f0406db0-fb16-43e8-8a88-2936a7eb1c28.jpg", url: "smw.html" },
+      { id: 2, title: "Super Metroid", image: "https://images.launchbox-app.com/b95d0fb0-9106-444a-a436-e82dfbbd3527.jpg", url: "metroid.html" },
+      { id: 3, title: "Donkey Kong Country", image: "https://images.launchbox-app.com/15233157-1ba7-4228-a6d1-447a111a84f5.jpg", url: "dkc.html" },
+      { id: 4, title: "Super Mario Kart", image: "https://images.launchbox-app.com/be7cfa8c-ea39-4467-bc18-ee58066f38fe.jpg", url: "mariokart.html" }
     ];
 
     const grid = document.getElementById('gamesGrid');
