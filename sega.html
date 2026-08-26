@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DIAMONDS - Emulator Sega Genesis</title>
+  <title>DIAMONDS - Emulator SEGA</title>
   <style>
     :root {
-      --bg-color: #0d1117;
-      --card-bg: #161b22;
+      --bg-color: #0f141f;
+      --card-bg: #182235;
       --primary: #0070f3;
       --accent: #50e3c2;
       --text-color: #ffffff;
-      --text-muted: #8b949e;
+      --text-muted: #8c9fb5;
     }
 
     * {
@@ -30,7 +30,7 @@
     }
 
     header {
-      background: rgba(13, 17, 23, 0.95);
+      background: rgba(15, 20, 31, 0.95);
       position: sticky;
       top: 0;
       z-index: 100;
@@ -57,7 +57,7 @@
       text-decoration: none;
     }
 
-    .badge-sega {
+    .badge-console {
       background: var(--primary);
       color: #fff;
       font-size: 0.8rem;
@@ -97,7 +97,7 @@
     .nav-btn.nes-btn:hover {
       background: rgba(255, 71, 87, 0.2);
       border-color: #ff4757;
-      color: #ff4757;
+      color: #ff6b81;
       box-shadow: 0 0 15px rgba(255, 71, 87, 0.4);
     }
 
@@ -205,6 +205,28 @@
       text-align: center;
     }
 
+    /* Adsterra Container */
+    .ad-wrapper {
+      margin-top: 3rem;
+      padding: 1.5rem;
+      background: rgba(24, 34, 53, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .ad-tag {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--text-muted);
+      margin-bottom: 0.8rem;
+    }
+
     /* Modal */
     .modal {
       display: none;
@@ -231,7 +253,7 @@
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      box-shadow: 0 0 35px rgba(0, 112, 243, 0.35);
+      box-shadow: 0 0 35px rgba(0, 112, 243, 0.4);
       position: relative;
     }
 
@@ -247,7 +269,7 @@
       justify-content: space-between;
       align-items: center;
       padding: 0.8rem 1.2rem;
-      background: #161b22;
+      background: #182235;
       color: #fff;
     }
 
@@ -271,7 +293,7 @@
     }
 
     .btn-action:hover {
-      color: var(--primary);
+      color: var(--accent);
     }
 
     .modal-content iframe {
@@ -287,7 +309,7 @@
   <header>
     <div class="brand-wrap">
       <a href="nes.html" class="brand">DIAMONDS</a>
-      <span class="badge-sega">SEGA GENESIS</span>
+      <span class="badge-console">EMULATOR SEGA</span>
     </div>
 
     <nav class="nav-links">
@@ -303,14 +325,21 @@
   </header>
 
   <main>
-    <div class="section-title">⚡ Catálogo de Sega Genesis / Mega Drive (16-BIT)</div>
+    <div class="section-title">⚡ Catálogo de Sega Genesis / Mega Drive</div>
     <div class="games-grid" id="gamesGrid"></div>
+
+    <!-- ANUNCIO ADSTERRA -->
+    <div class="ad-wrapper">
+      <div class="ad-tag">Publicidad Patrocinada</div>
+      <script async="async" data-cfasync="false" src="https://pl31042827.profitableratecpmnetwork.com/f39ca1dab3c6020bea8bd186bd796ce9/invoke.js"></script>
+      <div id="container-f39ca1dab3c6020bea8bd186bd796ce9"></div>
+    </div>
   </main>
 
   <div class="modal" id="gameModal">
     <div class="modal-content" id="modalContainer">
       <div class="modal-header">
-        <h3 id="modalTitle">Sega Genesis Player</h3>
+        <h3 id="modalTitle">Sega Player</h3>
         <div class="header-actions">
           <button class="btn-action" id="fullscreenBtn" title="Pantalla completa">⛶</button>
           <button class="btn-action" id="closeModal" title="Cerrar">&times;</button>
@@ -322,9 +351,10 @@
 
   <script>
     const segaGames = [
-      { id: 1, title: "Sonic The Hedgehog", image: "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=400&auto=format&fit=crop&q=80", url: "sonic.html" },
-      { id: 2, title: "FIFA: Road to World Cup 98", image: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=400&auto=format&fit=crop&q=80", url: "fifa98.html" },
-      { id: 3, title: "OutRun Highway", image: "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?w=400&auto=format&fit=crop&q=80", url: "https://funhtml5games.com/outrun/index.html" }
+      { id: 1, title: "Sonic The Hedgehog", image: "https://images.launchbox-app.com/39ddc955-f6c6-4d0f-a9cb-f4f69165dcae.jpg", url: "sonic.html" },
+      { id: 2, title: "Sonic The Hedgehog 2", image: "https://images.launchbox-app.com/978aa9ca-9a00-4ea3-8fba-742a17f9b882.jpg", url: "sonic2.html" },
+      { id: 3, title: "Streets of Rage 2", image: "https://images.launchbox-app.com/a42b1022-777e-4b68-b7a4-e91b5c924bc9.jpg", url: "sor2.html" },
+      { id: 4, title: "Aladdin", image: "https://images.launchbox-app.com/f65c92c3-4ee1-4dca-9fc0-ca72db0f61a1.jpg", url: "aladdin.html" }
     ];
 
     const grid = document.getElementById('gamesGrid');
@@ -339,7 +369,7 @@
     function renderGames(list) {
       grid.innerHTML = '';
       if (list.length === 0) {
-        grid.innerHTML = '<p style="color: var(--text-muted); grid-column: 1/-1;">No se encontraron juegos de Sega Genesis.</p>';
+        grid.innerHTML = '<p style="color: var(--text-muted); grid-column: 1/-1;">No se encontraron juegos de Sega.</p>';
         return;
       }
       list.forEach(game => {
@@ -350,7 +380,7 @@
           <div class="game-title">${game.title}</div>
         `;
         card.addEventListener('click', () => {
-          modalTitle.textContent = game.title + " (Sega)";
+          modalTitle.textContent = game.title + " (Genesis)";
           gameFrame.src = game.url;
           modal.classList.add('open');
           setTimeout(() => {
