@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DIAMONDS - Retro Gaming Hub</title>
+  <style>
+    :root {
+      --bg-color: #0b0f19;
+      --card-bg: #141c2e;
+      --card-hover: #1b2740;
+      --primary: #00d2ff;
+      --accent: #3a7bd5;
+      --text-color: #ffffff;
+      --text-muted: #8c9fb5;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-image: radial-gradient(circle at 50% 0%, rgba(0, 210, 255, 0.08) 0%, transparent 60%);
+    }
+
+    header {
+      background: rgba(11, 15, 25, 0.95);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 2rem;
+      border-bottom: 2px solid rgba(0, 210, 255, 0.2);
+      backdrop-filter: blur(10px);
+    }
+
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand {
+      font-size: 1.8rem;
+      font-weight: 900;
+      letter-spacing: 3px;
+      color: #fff;
+      text-decoration: none;
+      background: linear-gradient(135deg, #00d2ff, #3a7bd5);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .badge-hub {
+      background: rgba(0, 210, 255, 0.15);
+      border: 1px solid rgba(0, 210, 255, 0.4);
+      color: #00d2ff;
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 6px;
+      letter-spacing: 1px;
+    }
+
+    main {
+      flex: 1;
+      padding: 3rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 900;
+      margin-bottom: 0.8rem;
+      letter-spacing: 1px;
+    }
+
+    .hero p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 600px;
+      line-height: 1.6;
+    }
+
+    .consoles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      width: 100%;
+      margin-bottom: 3.5rem;
+    }
+
+    .console-card {
+      background-color: var(--card-bg);
+      border-radius: 20px;
+      padding: 2rem 1.5rem;
+      text-decoration: none;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .console-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .console-card:hover {
+      transform: translateY(-8px);
+      background-color: var(--card-hover);
+    }
+
+    /* Estilos específicos de cada consola */
+    .card-nes:hover {
+      border-color: #ff4757;
+      box-shadow: 0 12px 30px rgba(255, 71, 87, 0.25);
+    }
+    .card-nes .icon { background: rgba(255, 71, 87, 0.15); color: #ff4757; }
+
+    .card-snes:hover {
+      border-color: #a55eea;
+      box-shadow: 0 12px 30px rgba(165, 94, 234, 0.25);
+    }
+    .card-snes .icon { background: rgba(165, 94, 234, 0.15); color: #a55eea; }
+
+    .card-sega:hover {
+      border-color: #0070f3;
+      box-shadow: 0 12px 30px rgba(0, 112, 243, 0.25);
+    }
+    .card-sega .icon { background: rgba(0, 112, 243, 0.15); color: #0070f3; }
+
+    .card-gba:hover {
+      border-color: #2ed573;
+      box-shadow: 0 12px 30px rgba(46, 213, 115, 0.25);
+    }
+    .card-gba .icon { background: rgba(46, 213, 115, 0.15); color: #2ed573; }
+
+    .icon-wrapper {
+      width: 70px;
+      height: 70px;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      margin-bottom: 1.2rem;
+      transition: transform 0.3s ease;
+    }
+
+    .console-card:hover .icon-wrapper {
+      transform: scale(1.1);
+    }
+
+    .console-card h2 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+
+    .console-card p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1.2rem;
+      line-height: 1.4;
+    }
+
+    .btn-play {
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 0.5rem 1.2rem;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      display: inline-block;
+    }
+
+    /* Adsterra Container */
+    .ad-wrapper {
+      width: 100%;
+      margin-top: 1rem;
+      padding: 1.5rem;
+      background: rgba(20, 28, 46, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .ad-tag {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--text-muted);
+      margin-bottom: 0.8rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="brand-wrap">
+      <a href="index.html" class="brand">DIAMONDS</a>
+      <span class="badge-hub">PORTAL</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Selecciona tu Consola</h1>
+      <p>Juega clásicos retro directamente desde tu navegador sin instalar nada adicional.</p>
+    </section>
+
+    <div class="consoles-grid">
+      <!-- Tarjeta NES -->
+      <a href="nes.html" class="console-card card-nes">
+        <div class="icon-wrapper icon">🔴</div>
+        <h2>NES</h2>
+        <p>Nintendo Entertainment System (8-bit classics).</p>
+        <span class="btn-play">Explorar Catálogo →</span>
+      </a>
+
+      <!-- Tarjeta SNES -->
+      <a href="snes.html" class="console-card card-snes">
+        <div class="icon-wrapper icon">🟣</div>
+        <h2>SNES</h2>
+        <p>Super Nintendo con 16-bit, Mario World, Metroid y más.</p>
+        <span class="btn-play">Explorar Catálogo →</span>
+      </a>
+
+      <!-- Tarjeta SEGA -->
+      <a href="sega.html" class="console-card card-sega">
+        <div class="icon-wrapper icon">⚡</div>
+        <h2>SEGA</h2>
+        <p>Sega Genesis y Mega Drive con toda la velocidad de Sonic.</p>
+        <span class="btn-play">Explorar Catálogo →</span>
+      </a>
+
+      <!-- Tarjeta GBA -->
+      <a href="gba.html" class="console-card card-gba">
+        <div class="icon-wrapper icon">🟢</div>
+        <h2>Game Boy</h2>
+        <p>Game Boy Advance y títulos portátiles clásicos como Pokémon.</p>
+        <span class="btn-play">Explorar Catálogo →</span>
+      </a>
+    </div>
+
+    <!-- ANUNCIO ADSTERRA -->
+    <div class="ad-wrapper">
+      <div class="ad-tag">Publicidad Patrocinada</div>
+      <script async="async" data-cfasync="false" src="https://pl31042827.profitableratecpmnetwork.com/f39ca1dab3c6020bea8bd186bd796ce9/invoke.js"></script>
+      <div id="container-f39ca1dab3c6020bea8bd186bd796ce9"></div>
+    </div>
+  </main>
+
+</body>
+</html>
