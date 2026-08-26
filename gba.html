@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DIAMONDS - Emulator Game Boy / GBA</title>
+  <title>DIAMONDS - Emulator GBA</title>
   <style>
     :root {
-      --bg-color: #0d1310;
-      --card-bg: #14221b;
-      --primary: #10ac84;
-      --accent: #2ed573;
+      --bg-color: #0f141f;
+      --card-bg: #182235;
+      --primary: #2ed573;
+      --accent: #ffa502;
       --text-color: #ffffff;
-      --text-muted: #8ca398;
+      --text-muted: #8c9fb5;
     }
 
     * {
@@ -30,7 +30,7 @@
     }
 
     header {
-      background: rgba(13, 19, 16, 0.95);
+      background: rgba(15, 20, 31, 0.95);
       position: sticky;
       top: 0;
       z-index: 100;
@@ -57,9 +57,9 @@
       text-decoration: none;
     }
 
-    .badge-gba {
+    .badge-console {
       background: var(--primary);
-      color: #fff;
+      color: #000;
       font-size: 0.8rem;
       font-weight: 800;
       padding: 4px 10px;
@@ -97,7 +97,7 @@
     .nav-btn.nes-btn:hover {
       background: rgba(255, 71, 87, 0.2);
       border-color: #ff4757;
-      color: #ff4757;
+      color: #ff6b81;
       box-shadow: 0 0 15px rgba(255, 71, 87, 0.4);
     }
 
@@ -117,7 +117,7 @@
 
     .nav-btn.gba-btn {
       background: rgba(46, 213, 115, 0.25);
-      border-color: var(--accent);
+      border-color: var(--primary);
       color: #2ed573;
       box-shadow: 0 0 15px rgba(46, 213, 115, 0.35);
     }
@@ -139,7 +139,7 @@
     }
 
     .search-bar input:focus {
-      border-color: var(--accent);
+      border-color: var(--primary);
       box-shadow: 0 0 10px rgba(46, 213, 115, 0.3);
     }
 
@@ -182,7 +182,7 @@
 
     .game-card:hover {
       transform: translateY(-6px) scale(1.02);
-      border-color: var(--accent);
+      border-color: var(--primary);
       box-shadow: 0 10px 25px rgba(46, 213, 115, 0.35);
     }
 
@@ -203,6 +203,28 @@
       font-size: 0.9rem;
       font-weight: 700;
       text-align: center;
+    }
+
+    /* Adsterra Container */
+    .ad-wrapper {
+      margin-top: 3rem;
+      padding: 1.5rem;
+      background: rgba(24, 34, 53, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .ad-tag {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--text-muted);
+      margin-bottom: 0.8rem;
     }
 
     /* Modal */
@@ -247,7 +269,7 @@
       justify-content: space-between;
       align-items: center;
       padding: 0.8rem 1.2rem;
-      background: #14221b;
+      background: #182235;
       color: #fff;
     }
 
@@ -271,7 +293,7 @@
     }
 
     .btn-action:hover {
-      color: var(--accent);
+      color: var(--primary);
     }
 
     .modal-content iframe {
@@ -287,7 +309,7 @@
   <header>
     <div class="brand-wrap">
       <a href="nes.html" class="brand">DIAMONDS</a>
-      <span class="badge-gba">GAME BOY ADVANCE</span>
+      <span class="badge-console">EMULATOR GBA</span>
     </div>
 
     <nav class="nav-links">
@@ -303,14 +325,21 @@
   </header>
 
   <main>
-    <div class="section-title">🟢 Catálogo de Game Boy & GBA</div>
+    <div class="section-title">🟢 Catálogo de Game Boy Advance</div>
     <div class="games-grid" id="gamesGrid"></div>
+
+    <!-- ANUNCIO ADSTERRA -->
+    <div class="ad-wrapper">
+      <div class="ad-tag">Publicidad Patrocinada</div>
+      <script async="async" data-cfasync="false" src="https://pl31042827.profitableratecpmnetwork.com/f39ca1dab3c6020bea8bd186bd796ce9/invoke.js"></script>
+      <div id="container-f39ca1dab3c6020bea8bd186bd796ce9"></div>
+    </div>
   </main>
 
   <div class="modal" id="gameModal">
     <div class="modal-content" id="modalContainer">
       <div class="modal-header">
-        <h3 id="modalTitle">Game Boy Player</h3>
+        <h3 id="modalTitle">GBA Player</h3>
         <div class="header-actions">
           <button class="btn-action" id="fullscreenBtn" title="Pantalla completa">⛶</button>
           <button class="btn-action" id="closeModal" title="Cerrar">&times;</button>
@@ -322,9 +351,10 @@
 
   <script>
     const gbaGames = [
-      { id: 1, title: "Tetris GB Clásico", image: "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=400&auto=format&fit=crop&q=80", url: "https://chvin.github.io/react-tetris/" },
-      { id: 2, title: "Clumsy Bird", image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=400&auto=format&fit=crop&q=80", url: "https://ellisonleao.github.io/clumsy-bird/" },
-      { id: 3, title: "Breaklock", image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400&auto=format&fit=crop&q=80", url: "https://maxwellito.github.io/breaklock/" }
+      { id: 1, title: "Pokemon Emerald", image: "https://images.launchbox-app.com/dfeb305c-cf31-401d-b8d4-5da30932bb83.jpg", url: "emerald.html" },
+      { id: 2, title: "Pokemon FireRed", image: "https://images.launchbox-app.com/39ff1253-559d-47be-b1e0-c3d3a01ffbe6.jpg", url: "firered.html" },
+      { id: 3, title: "The Legend of Zelda: The Minish Cap", image: "https://images.launchbox-app.com/492c7308-4107-425c-a579-242861c83df6.jpg", url: "minishcap.html" },
+      { id: 4, title: "Metroid Fusion", image: "https://images.launchbox-app.com/13d10078-ebf2-491c-99d9-ae4ba88c1c4f.jpg", url: "fusion.html" }
     ];
 
     const grid = document.getElementById('gamesGrid');
@@ -339,7 +369,7 @@
     function renderGames(list) {
       grid.innerHTML = '';
       if (list.length === 0) {
-        grid.innerHTML = '<p style="color: var(--text-muted); grid-column: 1/-1;">No se encontraron juegos de Game Boy.</p>';
+        grid.innerHTML = '<p style="color: var(--text-muted); grid-column: 1/-1;">No se encontraron juegos de GBA.</p>';
         return;
       }
       list.forEach(game => {
@@ -350,7 +380,7 @@
           <div class="game-title">${game.title}</div>
         `;
         card.addEventListener('click', () => {
-          modalTitle.textContent = game.title + " (Game Boy)";
+          modalTitle.textContent = game.title + " (GBA)";
           gameFrame.src = game.url;
           modal.classList.add('open');
           setTimeout(() => {
