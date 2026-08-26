@@ -2,25 +2,40 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Galaga</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Galaga NES - DIAMONDS</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body { width: 100%; height: 100%; overflow: hidden; background-color: #000; }
-    #game-container { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body, html {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background-color: #000;
+    }
+    #game {
+      width: 100%;
+      height: 100%;
+    }
   </style>
 </head>
 <body>
-  <div id="game-container">
-    <div id="game"></div>
-  </div>
+
+  <div id="game"></div>
 
   <script>
-    EJS_player = '#game';
-    EJS_core = 'nes';
-    EJS_gameUrl = './galaga.nes';
-    EJS_pathtodata = 'https://cdn.emulatorjs.org/stable/data/';
-    EJS_startOnLoaded = true;
+    window.EJS_player = '#game';
+    window.EJS_core = 'nes';
+    window.EJS_gameName = 'Galaga';
+    window.EJS_color = '#00e5ff';
+    window.EJS_startOnLoaded = true;
+    window.EJS_pathtodata = 'https://cdn.emulatorjs.org/stable/data/';
+    window.EJS_gameUrl = 'Galaga.nes'; // Nombre exacto del archivo subido
   </script>
   <script src="https://cdn.emulatorjs.org/stable/data/loader.js"></script>
+
 </body>
 </html>
