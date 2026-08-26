@@ -3,396 +3,143 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DIAMONDS - Emulator NES</title>
+  <title>NES Classics - DIAMONDS</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   <style>
-    :root {
-      --bg-color: #0f141f;
-      --card-bg: #182235;
-      --primary: #ff4757;
-      --accent: #2ed573;
-      --text-color: #ffffff;
-      --text-muted: #8c9fb5;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    }
-
     body {
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
+      background-color: #0b0f19;
+      color: #f3f4f6;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
-
-    header {
-      background: rgba(15, 20, 31, 0.95);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.2rem 2rem;
-      border-bottom: 2px solid rgba(255, 71, 87, 0.25);
-      gap: 1.5rem;
-      flex-wrap: wrap;
+    .neon-border {
+      box-shadow: 0 0 15px rgba(0, 229, 255, 0.15);
+      transition: all 0.3s ease;
     }
-
-    .brand-wrap {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .brand {
-      font-size: 1.8rem;
-      font-weight: 900;
-      letter-spacing: 2px;
-      color: #fff;
-      text-decoration: none;
-    }
-
-    .badge-nes {
-      background: var(--primary);
-      color: #fff;
-      font-size: 0.8rem;
-      font-weight: 800;
-      padding: 4px 10px;
-      border-radius: 6px;
-      letter-spacing: 1px;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .nav-btn {
-      color: #ffffff;
-      text-decoration: none;
-      font-size: 0.95rem;
-      font-weight: 700;
-      padding: 0.55rem 1.1rem;
-      border-radius: 10px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      transition: all 0.25s ease;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .nav-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-    }
-
-    .nav-btn.nes-btn {
-      background: rgba(255, 71, 87, 0.25);
-      border-color: var(--primary);
-      color: #ff6b81;
-      box-shadow: 0 0 15px rgba(255, 71, 87, 0.35);
-    }
-
-    .nav-btn.snes-btn:hover {
-      background: rgba(165, 94, 234, 0.2);
-      border-color: #a55eea;
-      color: #a55eea;
-      box-shadow: 0 0 15px rgba(165, 94, 234, 0.4);
-    }
-
-    .nav-btn.sega-btn:hover {
-      background: rgba(0, 112, 243, 0.2);
-      border-color: #0070f3;
-      color: #50e3c2;
-      box-shadow: 0 0 15px rgba(0, 112, 243, 0.4);
-    }
-
-    .nav-btn.gba-btn:hover {
-      background: rgba(46, 213, 115, 0.2);
-      border-color: #2ed573;
-      color: #2ed573;
-      box-shadow: 0 0 15px rgba(46, 213, 115, 0.4);
-    }
-
-    .search-bar {
-      flex: 0 1 320px;
-    }
-
-    .search-bar input {
-      width: 100%;
-      padding: 0.65rem 1.2rem;
-      border-radius: 20px;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      background-color: var(--card-bg);
-      color: var(--text-color);
-      outline: none;
-      font-size: 0.9rem;
-      transition: 0.2s;
-    }
-
-    .search-bar input:focus {
-      border-color: var(--primary);
-      box-shadow: 0 0 10px rgba(255, 71, 87, 0.3);
-    }
-
-    main {
-      flex: 1;
-      padding: 2.5rem 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-      width: 100%;
-    }
-
-    .section-title {
-      font-size: 1.3rem;
-      margin-bottom: 1.5rem;
-      color: #e2e8f0;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 700;
-    }
-
-    .games-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .game-card {
-      background-color: var(--card-bg);
-      border-radius: 16px;
-      overflow: hidden;
-      cursor: pointer;
-      position: relative;
-      aspect-ratio: 1 / 1;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .game-card:hover {
-      transform: translateY(-6px) scale(1.02);
-      border-color: var(--primary);
-      box-shadow: 0 10px 25px rgba(255, 71, 87, 0.35);
-    }
-
-    .game-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .game-title {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      padding: 0.7rem;
-      background: linear-gradient(to top, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.5) 60%, transparent);
-      font-size: 0.9rem;
-      font-weight: 700;
-      text-align: center;
-    }
-
-    /* Modal */
-    .modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.9);
-      z-index: 1000;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 1rem;
-    }
-
-    .modal.open {
-      display: flex;
-    }
-
-    .modal-content {
-      width: 90%;
-      max-width: 900px;
-      height: 80vh;
-      background: #000;
-      border-radius: 12px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      box-shadow: 0 0 35px rgba(255, 71, 87, 0.4);
-      position: relative;
-    }
-
-    .modal-content.fullscreen {
-      width: 100vw !important;
-      max-width: 100vw !important;
-      height: 100vh !important;
-      border-radius: 0 !important;
-    }
-
-    .modal-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.8rem 1.2rem;
-      background: #182235;
-      color: #fff;
-    }
-
-    .header-actions {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .btn-action {
-      background: none;
-      border: none;
-      color: #fff;
-      font-size: 1.3rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 4px;
-      transition: color 0.2s;
-    }
-
-    .btn-action:hover {
-      color: var(--primary);
-    }
-
-    .modal-content iframe {
-      width: 100%;
-      flex: 1;
-      border: none;
-      background-color: #000;
+    .neon-border:hover {
+      box-shadow: 0 0 25px rgba(0, 229, 255, 0.5);
+      transform: translateY(-4px);
     }
   </style>
 </head>
-<body>
+<body class="min-h-screen flex flex-col justify-between">
 
-  <header>
-    <div class="brand-wrap">
-      <a href="nes.html" class="brand">DIAMONDS</a>
-      <span class="badge-nes">EMULATOR NES</span>
-    </div>
-
-    <nav class="nav-links">
-      <a href="nes.html" class="nav-btn nes-btn">🔴 NES</a>
-      <a href="snes.html" class="nav-btn snes-btn">🟣 SNES</a>
-      <a href="sega.html" class="nav-btn sega-btn">⚡ Sega Genesis</a>
-      <a href="gba.html" class="nav-btn gba-btn">🟢 Game Boy</a>
-    </nav>
-
-    <div class="search-bar">
-      <input type="text" id="searchInput" placeholder="Buscar juego de NES...">
+  <!-- Encabezado -->
+  <header class="p-6 border-b border-cyan-900/40 bg-slate-900/60 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <i class="fa-solid fa-gem text-cyan-400 text-2xl"></i>
+        <h1 class="text-2xl font-black tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
+          DIAMONDS <span class="text-xs uppercase px-2 py-1 rounded bg-cyan-950 text-cyan-300 border border-cyan-800">NES</span>
+        </h1>
+      </div>
+      <a href="index.html" class="text-sm font-semibold text-gray-400 hover:text-cyan-400 transition">
+        <i class="fa-solid fa-arrow-left mr-1"></i> Inicio
+      </a>
     </div>
   </header>
 
-  <main>
-    <div class="section-title">🕹️ Catálogo de Nintendo Entertainment System</div>
-    <div class="games-grid" id="gamesGrid"></div>
+  <!-- Catálogo de Juegos -->
+  <main class="max-w-6xl mx-auto p-6 flex-1 w-full">
+    <div class="mb-8">
+      <h2 class="text-3xl font-extrabold text-white">Catálogo Nintendo (NES)</h2>
+      <p class="text-gray-400 text-sm mt-1">Selecciona un juego para ejecutar el emulador directamente en tu navegador.</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
+
+      <!-- Super Mario Bros -->
+      <a href="mario.html" class="group block bg-slate-900 border border-slate-800 rounded-xl overflow-hidden neon-border">
+        <div class="h-48 w-full bg-slate-950 overflow-hidden flex items-center justify-center relative">
+          <img src="https://upload.wikimedia.org/wikipedia/en/0/03/Super_Mario_Bros._cover.png" alt="Super Mario Bros" class="w-full h-full object-cover object-center group-hover:scale-105 transition duration-300">
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent opacity-80"></div>
+          <span class="absolute bottom-2 left-3 text-xs font-semibold px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">
+            Plataformas
+          </span>
+        </div>
+        <div class="p-4 flex justify-between items-center">
+          <h3 class="font-bold text-lg text-white group-hover:text-cyan-400 transition">Super Mario Bros</h3>
+          <span class="text-cyan-400 text-sm font-semibold flex items-center gap-1 group-hover:translate-x-1 transition">
+            Jugar <i class="fa-solid fa-play text-xs"></i>
+          </span>
+        </div>
+      </a>
+
+      <!-- Galaga -->
+      <a href="galaga.html" class="group block bg-slate-900 border border-slate-800 rounded-xl overflow-hidden neon-border">
+        <div class="h-48 w-full bg-slate-950 overflow-hidden flex items-center justify-center relative">
+          <img src="https://upload.wikimedia.org/wikipedia/en/thumb/0/04/Galaga_arcade_flyer.jpg/220px-Galaga_arcade_flyer.jpg" alt="Galaga" class="w-full h-full object-cover object-center group-hover:scale-105 transition duration-300">
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent opacity-80"></div>
+          <span class="absolute bottom-2 left-3 text-xs font-semibold px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">
+            Arcade / Shooter
+          </span>
+        </div>
+        <div class="p-4 flex justify-between items-center">
+          <h3 class="font-bold text-lg text-white group-hover:text-cyan-400 transition">Galaga</h3>
+          <span class="text-cyan-400 text-sm font-semibold flex items-center gap-1 group-hover:translate-x-1 transition">
+            Jugar <i class="fa-solid fa-play text-xs"></i>
+          </span>
+        </div>
+      </a>
+
+      <!-- Arkanoid -->
+      <a href="arkanoid.html" class="group block bg-slate-900 border border-slate-800 rounded-xl overflow-hidden neon-border">
+        <div class="h-48 w-full bg-slate-950 overflow-hidden flex items-center justify-center relative">
+          <img src="https://upload.wikimedia.org/wikipedia/en/2/29/Arkanoid_NES_box_art.jpg" alt="Arkanoid" class="w-full h-full object-cover object-center group-hover:scale-105 transition duration-300">
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent opacity-80"></div>
+          <span class="absolute bottom-2 left-3 text-xs font-semibold px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">
+            Rompebloques
+          </span>
+        </div>
+        <div class="p-4 flex justify-between items-center">
+          <h3 class="font-bold text-lg text-white group-hover:text-cyan-400 transition">Arkanoid</h3>
+          <span class="text-cyan-400 text-sm font-semibold flex items-center gap-1 group-hover:translate-x-1 transition">
+            Jugar <i class="fa-solid fa-play text-xs"></i>
+          </span>
+        </div>
+      </a>
+
+      <!-- Metroid (NES) -->
+      <a href="metroid.html" class="group block bg-slate-900 border border-slate-800 rounded-xl overflow-hidden neon-border">
+        <div class="h-48 w-full bg-slate-950 overflow-hidden flex items-center justify-center relative">
+          <img src="https://upload.wikimedia.org/wikipedia/en/5/5d/Metroid_boxart.jpg" alt="Metroid" class="w-full h-full object-cover object-center group-hover:scale-105 transition duration-300">
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent opacity-80"></div>
+          <span class="absolute bottom-2 left-3 text-xs font-semibold px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">
+            Aventura / Acción
+          </span>
+        </div>
+        <div class="p-4 flex justify-between items-center">
+          <h3 class="font-bold text-lg text-white group-hover:text-cyan-400 transition">Metroid</h3>
+          <span class="text-cyan-400 text-sm font-semibold flex items-center gap-1 group-hover:translate-x-1 transition">
+            Jugar <i class="fa-solid fa-play text-xs"></i>
+          </span>
+        </div>
+      </a>
+
+      <!-- Sonic / Sega Master / Genesis Port -->
+      <a href="sonic.html" class="group block bg-slate-900 border border-slate-800 rounded-xl overflow-hidden neon-border">
+        <div class="h-48 w-full bg-slate-950 overflow-hidden flex items-center justify-center relative">
+          <img src="https://upload.wikimedia.org/wikipedia/en/b/ba/Sonic_the_Hedgehog_1_Genesis_box_art.jpg" alt="Sonic The Hedgehog" class="w-full h-full object-cover object-center group-hover:scale-105 transition duration-300">
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent opacity-80"></div>
+          <span class="absolute bottom-2 left-3 text-xs font-semibold px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">
+            Velocidad / Plataformas
+          </span>
+        </div>
+        <div class="p-4 flex justify-between items-center">
+          <h3 class="font-bold text-lg text-white group-hover:text-cyan-400 transition">Sonic The Hedgehog</h3>
+          <span class="text-cyan-400 text-sm font-semibold flex items-center gap-1 group-hover:translate-x-1 transition">
+            Jugar <i class="fa-solid fa-play text-xs"></i>
+          </span>
+        </div>
+      </a>
+
+    </div>
   </main>
 
-  <div class="modal" id="gameModal">
-    <div class="modal-content" id="modalContainer">
-      <div class="modal-header">
-        <h3 id="modalTitle">NES Player</h3>
-        <div class="header-actions">
-          <button class="btn-action" id="fullscreenBtn" title="Pantalla completa">⛶</button>
-          <button class="btn-action" id="closeModal" title="Cerrar">&times;</button>
-        </div>
-      </div>
-      <iframe id="gameFrame" src="" allowfullscreen allow="autoplay; fullscreen; gamepad"></iframe>
-    </div>
-  </div>
+  <!-- Footer -->
+  <footer class="p-6 border-t border-slate-800 text-center text-xs text-gray-500">
+    DIAMONDS Retro Portal &copy; 2026 — Emulación Web
+  </footer>
 
-  <script>
-    const nesGames = [
-      { id: 1, title: "Galaga", image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&auto=format&fit=crop&q=80", url: "galaga.html" },
-      { id: 2, title: "Donkey Kong Classics", image: "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=400&auto=format&fit=crop&q=80", url: "https://funhtml5games.com/donkeykong/index.html" },
-      { id: 3, title: "Space Invaders NES", image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&auto=format&fit=crop&q=80", url: "https://funhtml5games.com/spaceinvaders/index.html" },
-      { id: 4, title: "Bubble Bobble NES", image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&auto=format&fit=crop&q=80", url: "https://funhtml5games.com/bubblebobble/index.html" },
-      { id: 5, title: {
-  title: "Arkanoid",
-  image: "https://upload.wikimedia.org/wikipedia/en/2/29/Arkanoid_NES_box_art.jpg",
-  url: "arkanoid.html"
-}
-      { id: 6, title: "Frogger Classic", image: "https://images.unsplash.com/photo-1551103782-8ab07afd45c1?w=400&auto=format&fit=crop&q=80", url: "https://funhtml5games.com/frogger/index.html" }
-    ];
-
-    const grid = document.getElementById('gamesGrid');
-    const modal = document.getElementById('gameModal');
-    const modalContainer = document.getElementById('modalContainer');
-    const gameFrame = document.getElementById('gameFrame');
-    const modalTitle = document.getElementById('modalTitle');
-    const closeModal = document.getElementById('closeModal');
-    const fullscreenBtn = document.getElementById('fullscreenBtn');
-    const searchInput = document.getElementById('searchInput');
-
-    function renderGames(list) {
-      grid.innerHTML = '';
-      if (list.length === 0) {
-        grid.innerHTML = '<p style="color: var(--text-muted); grid-column: 1/-1;">No se encontraron juegos de NES.</p>';
-        return;
-      }
-      list.forEach(game => {
-        const card = document.createElement('div');
-        card.className = 'game-card';
-        card.innerHTML = `
-          <img src="${game.image}" alt="${game.title}" loading="lazy">
-          <div class="game-title">${game.title}</div>
-        `;
-        card.addEventListener('click', () => {
-          modalTitle.textContent = game.title + " (NES)";
-          gameFrame.src = game.url;
-          modal.classList.add('open');
-          setTimeout(() => {
-            gameFrame.focus();
-            if (gameFrame.contentWindow) gameFrame.contentWindow.focus();
-          }, 150);
-        });
-        grid.appendChild(card);
-      });
-    }
-
-    closeModal.addEventListener('click', () => {
-      if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
-      modal.classList.remove('open');
-      modalContainer.classList.remove('fullscreen');
-      gameFrame.src = '';
-    });
-
-    fullscreenBtn.addEventListener('click', () => {
-      fullscreenBtn.blur();
-      if (!document.fullscreenElement) {
-        modalContainer.requestFullscreen().catch(() => {
-          modalContainer.classList.toggle('fullscreen');
-        });
-      } else {
-        document.exitFullscreen();
-      }
-    });
-
-    searchInput.addEventListener('input', (e) => {
-      const term = e.target.value.toLowerCase();
-      renderGames(nesGames.filter(g => g.title.toLowerCase().includes(term)));
-    });
-
-    renderGames(nesGames);
-  </script>
 </body>
 </html>
