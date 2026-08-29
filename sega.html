@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DIAMONDS - Emulator SEGA</title>
+  <title>DIAMONDS - Emulator Sega Genesis</title>
   <style>
     :root {
       --bg-color: #0f141f;
@@ -57,7 +57,7 @@
       text-decoration: none;
     }
 
-    .badge-console {
+    .badge-sega {
       background: var(--primary);
       color: #fff;
       font-size: 0.8rem;
@@ -111,7 +111,7 @@
     .nav-btn.sega-btn {
       background: rgba(0, 112, 243, 0.25);
       border-color: var(--primary);
-      color: #50e3c2;
+      color: var(--accent);
       box-shadow: 0 0 15px rgba(0, 112, 243, 0.35);
     }
 
@@ -205,7 +205,6 @@
       text-align: center;
     }
 
-    /* Adsterra Container */
     .ad-wrapper {
       margin-top: 3rem;
       padding: 1.5rem;
@@ -227,7 +226,6 @@
       margin-bottom: 0.8rem;
     }
 
-    /* Modal */
     .modal {
       display: none;
       position: fixed;
@@ -293,7 +291,7 @@
     }
 
     .btn-action:hover {
-      color: var(--accent);
+      color: var(--primary);
     }
 
     .modal-content iframe {
@@ -308,8 +306,8 @@
 
   <header>
     <div class="brand-wrap">
-      <a href="nes.html" class="brand">DIAMONDS</a>
-      <span class="badge-console">EMULATOR SEGA</span>
+      <a href="sega.html" class="brand">DIAMONDS</a>
+      <span class="badge-sega">EMULATOR SEGA</span>
     </div>
 
     <nav class="nav-links">
@@ -320,15 +318,14 @@
     </nav>
 
     <div class="search-bar">
-      <input type="text" id="searchInput" placeholder="Buscar juego de Sega...">
+      <input type="text" id="searchInput" placeholder="Buscar juego de Sega Genesis...">
     </div>
   </header>
 
   <main>
-    <div class="section-title">⚡ Catálogo de Sega Genesis / Mega Drive</div>
+    <div class="section-title">🕹️ Catálogo de Sega Genesis / Mega Drive</div>
     <div class="games-grid" id="gamesGrid"></div>
 
-    <!-- ANUNCIO ADSTERRA -->
     <div class="ad-wrapper">
       <div class="ad-tag">Publicidad Patrocinada</div>
       <script async="async" data-cfasync="false" src="https://pl31042827.profitableratecpmnetwork.com/f39ca1dab3c6020bea8bd186bd796ce9/invoke.js"></script>
@@ -351,18 +348,10 @@
 
   <script>
     const segaGames = [
-      { 
-        id: 1, 
-        title: "Sonic The Hedgehog", 
-        image: "https://images.launchbox-app.com/39ddc955-f6c6-4d0f-a9cb-f4f69165dcae.jpg", 
-        url: "sonic.html" 
-      },
-      { 
-        id: 2, 
-        title: "FIFA 98: Road to World Cup", 
-        image: "https://images.launchbox-app.com/0cb6353d-2495-460d-85fa-7f85829141be.jpg", 
-        url: "fifa98.html" 
-      }
+      { id: 1, title: "Sonic The Hedgehog", image: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'><rect width='300' height='300' fill='%23030d1a'/><circle cx='150' cy='120' r='60' fill='none' stroke='%23f59e0b' stroke-width='14'/><path d='M105,120 L145,75 L145,120 L195,120 L150,165 L150,120 Z' fill='%230284c7'/><text x='150' y='250' font-family='monospace' font-size='18' font-weight='900' fill='%2338bdf8' text-anchor='middle'>SONIC CLASSIC</text></svg>", url: "sonic.html" },
+      { id: 2, title: "Sonic 2", image: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'><rect width='300' height='300' fill='%23051b2c'/><circle cx='130' cy='115' r='45' fill='%230284c7'/><circle cx='180' cy='115' r='35' fill='%23f59e0b'/><text x='150' y='250' font-family='monospace' font-size='20' font-weight='900' fill='%23f59e0b' text-anchor='middle'>SONIC 2</text></svg>", url: "sonic2.html" },
+      { id: 3, title: "Streets of Rage", image: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'><rect width='300' height='300' fill='%231f130b'/><rect x='80' y='90' width='140' height='70' rx='12' fill='%23dc2626'/><polygon points='110,130 140,105 170,140 200,110' stroke='%23ffffff' stroke-width='6' fill='none'/><text x='150' y='250' font-family='monospace' font-size='16' font-weight='900' fill='%23ef4444' text-anchor='middle'>STREETS OF RAGE</text></svg>", url: "sor.html" },
+      { id: 4, title: "Golden Axe", image: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'><rect width='300' height='300' fill='%231c1917'/><line x1='90' y1='170' x2='210' y2='70' stroke='%2378716c' stroke-width='14'/><polygon points='170,55 225,50 230,105 190,95' fill='%23eab308'/><text x='150' y='250' font-family='monospace' font-size='18' font-weight='900' fill='%23eab308' text-anchor='middle'>GOLDEN AXE</text></svg>", url: "goldenaxe.html" }
     ];
 
     const grid = document.getElementById('gamesGrid');
@@ -388,7 +377,7 @@
           <div class="game-title">${game.title}</div>
         `;
         card.addEventListener('click', () => {
-          modalTitle.textContent = game.title + " (Genesis)";
+          modalTitle.textContent = game.title + " (Sega)";
           gameFrame.src = game.url;
           modal.classList.add('open');
           setTimeout(() => {
