@@ -163,7 +163,7 @@
 
     .games-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
       gap: 1.5rem;
     }
 
@@ -174,7 +174,7 @@
       cursor: pointer;
       position: relative;
       aspect-ratio: 1 / 1;
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
       transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
       display: flex;
       flex-direction: column;
@@ -182,14 +182,22 @@
 
     .game-card:hover {
       transform: translateY(-6px) scale(1.02);
-      border-color: var(--primary);
-      box-shadow: 0 10px 25px rgba(46, 213, 115, 0.35);
+      border-color: #f97316;
+      box-shadow: 0 10px 25px rgba(249, 115, 22, 0.4);
     }
 
-    .game-card img {
+    .game-card .cover-wrap {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .game-card svg {
+      width: 100%;
+      height: 100%;
       display: block;
     }
 
@@ -251,7 +259,7 @@
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      box-shadow: 0 0 35px rgba(46, 213, 115, 0.4);
+      box-shadow: 0 0 35px rgba(249, 115, 22, 0.5);
       position: relative;
     }
 
@@ -291,7 +299,7 @@
     }
 
     .btn-action:hover {
-      color: var(--primary);
+      color: #f97316;
     }
 
     .modal-content iframe {
@@ -347,11 +355,153 @@
   </div>
 
   <script>
+    // SVG RECREADO EXACTO DE LA PORTADA OFICIAL DE CHARIZARD
+    const charizardCoverSVG = `
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+        <defs>
+          <radialGradient id="fireVortex" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#ffedd5"/>
+            <stop offset="25%" stop-color="#fb923c"/>
+            <stop offset="55%" stop-color="#ea580c"/>
+            <stop offset="85%" stop-color="#991b1b"/>
+            <stop offset="100%" stop-color="#450a0a"/>
+          </radialGradient>
+          
+          <linearGradient id="charizardSkin" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#fdba74"/>
+            <stop offset="45%" stop-color="#ea580c"/>
+            <stop offset="100%" stop-color="#9a3412"/>
+          </linearGradient>
+
+          <linearGradient id="wingInner" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#67e8f9"/>
+            <stop offset="60%" stop-color="#0891b2"/>
+            <stop offset="100%" stop-color="#164e63"/>
+          </linearGradient>
+
+          <linearGradient id="bellyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#fef08a"/>
+            <stop offset="100%" stop-color="#fde047"/>
+          </linearGradient>
+
+          <linearGradient id="tailFlame" x1="0%" y1="100%" x2="0%" y2="0%">
+            <stop offset="0%" stop-color="#dc2626"/>
+            <stop offset="50%" stop-color="#f97316"/>
+            <stop offset="100%" stop-color="#fef08a"/>
+          </linearGradient>
+
+          <filter id="whiteGlow" x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="0" dy="0" stdDeviation="6" flood-color="#ffffff" flood-opacity="0.9"/>
+          </filter>
+
+          <filter id="boxShadow">
+            <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#000000" flood-opacity="0.75"/>
+          </filter>
+        </defs>
+
+        <!-- FONDO REMOLINO DE FUEGO -->
+        <rect width="500" height="500" fill="url(#fireVortex)"/>
+
+        <!-- Espirales dinámicas -->
+        <g opacity="0.45" stroke="#fed7aa" stroke-width="8" fill="none" stroke-linecap="round">
+          <path d="M250,250 C120,220 80,100 160,40 C260,-30 420,50 450,180 C480,310 390,440 240,460 C90,480 -10,330 20,180" />
+          <path d="M250,250 C330,280 380,380 310,440 C220,500 80,410 50,300 C20,170 120,40 270,30" stroke="#f97316" stroke-width="14" />
+          <path d="M250,250 C190,200 160,130 210,80 C270,30 380,80 390,160 C400,250 330,330 230,340" stroke="#ef4444" stroke-width="18" />
+        </g>
+
+        <!-- CHARIZARD CON CONTORNO BLANCO -->
+        <g filter="url(#whiteGlow)">
+          <!-- Ala Trasera -->
+          <path d="M280,310 C240,260 250,210 300,190 C340,180 370,200 370,220 C340,240 330,280 280,310 Z" fill="#64748b" stroke="#1e293b" stroke-width="4"/>
+          <path d="M280,310 C320,270 335,230 365,220 C325,240 310,270 280,310 Z" fill="#334155"/>
+
+          <!-- Cola y Fuego -->
+          <path d="M200,430 C150,420 100,360 90,320 C90,360 130,440 180,470 Z" fill="url(#charizardSkin)" stroke="#1e293b" stroke-width="4"/>
+          <path d="M90,320 C70,300 70,280 85,260 C75,275 80,300 105,305 C115,290 110,270 115,250 C125,275 120,310 95,330 Z" fill="url(#tailFlame)" filter="url(#whiteGlow)"/>
+
+          <!-- Ala Delantera -->
+          <g>
+            <path d="M220,310 C180,240 120,180 45,280 C65,180 160,150 220,190 C235,170 250,180 240,200 C230,220 230,270 220,310 Z" fill="url(#charizardSkin)" stroke="#1e293b" stroke-width="5"/>
+            <path d="M50,275 C100,200 180,185 220,205 C215,250 205,300 180,340 C145,345 100,315 50,275 Z" fill="url(#wingInner)" stroke="#0f172a" stroke-width="4"/>
+            <path d="M120,230 Q160,250 180,340" stroke="#0891b2" stroke-width="3" fill="none"/>
+            <path d="M80,260 Q130,265 155,340" stroke="#0891b2" stroke-width="3" fill="none"/>
+          </g>
+
+          <!-- Pata Izquierda -->
+          <path d="M185,410 C180,445 200,470 230,470 C240,470 245,460 240,445 C235,430 220,410 185,410 Z" fill="url(#charizardSkin)" stroke="#1e293b" stroke-width="4"/>
+          <polygon points="215,475 225,465 220,460" fill="#f8fafc" stroke="#0f172a" stroke-width="2"/>
+          <polygon points="230,475 238,463 232,458" fill="#f8fafc" stroke="#0f172a" stroke-width="2"/>
+          <polygon points="245,470 248,458 240,455" fill="#f8fafc" stroke="#0f172a" stroke-width="2"/>
+
+          <!-- Pata Derecha -->
+          <path d="M300,430 C305,450 320,455 330,440 C335,430 330,410 310,400 Z" fill="#c2410c" stroke="#1e293b" stroke-width="4"/>
+
+          <!-- Cuerpo -->
+          <path d="M220,300 C210,340 190,390 220,435 C250,445 300,420 310,365 C320,320 280,290 250,285 Z" fill="url(#charizardSkin)" stroke="#1e293b" stroke-width="5"/>
+
+          <!-- Barriga Amarilla -->
+          <path d="M225,370 C220,400 235,430 260,430 C290,420 300,380 295,355 C280,365 245,375 225,370 Z" fill="url(#bellyGrad)" stroke="#1e293b" stroke-width="4"/>
+
+          <!-- Brazo Delantero -->
+          <path d="M305,335 C335,330 355,370 375,375 C370,390 350,385 335,375 C320,385 305,365 305,335 Z" fill="url(#charizardSkin)" stroke="#1e293b" stroke-width="4"/>
+          <polygon points="375,375 385,380 375,390" fill="#f8fafc" stroke="#0f172a" stroke-width="2"/>
+          <polygon points="365,395 355,385 365,378" fill="#f8fafc" stroke="#0f172a" stroke-width="2"/>
+
+          <!-- Cuello -->
+          <path d="M250,285 C260,250 280,225 315,220 C325,255 295,290 265,305 Z" fill="url(#charizardSkin)" stroke="#1e293b" stroke-width="5"/>
+
+          <!-- Cabeza Rugiendo -->
+          <g>
+            <path d="M330,220 C320,195 295,200 280,215 C295,225 315,225 330,220 Z" fill="url(#charizardSkin)" stroke="#1e293b" stroke-width="4"/>
+            <path d="M350,225 C375,210 395,215 405,225 C390,230 370,235 350,225 Z" fill="url(#charizardSkin)" stroke="#1e293b" stroke-width="4"/>
+            <path d="M315,220 C335,220 370,230 405,245 C415,255 410,270 390,275 C365,280 345,265 330,260 Z" fill="url(#charizardSkin)" stroke="#1e293b" stroke-width="4"/>
+
+            <!-- Interior Boca -->
+            <path d="M345,260 C360,270 385,275 390,275 C380,310 355,340 330,340 C320,335 320,300 335,270 Z" fill="#881337" stroke="#1e293b" stroke-width="4"/>
+            <path d="M340,325 C355,325 365,305 355,295 C345,305 335,315 340,325 Z" fill="#f43f5e"/>
+            <polygon points="380,270 385,280 390,275" fill="#f8fafc"/>
+            <polygon points="360,265 365,275 370,267" fill="#f8fafc"/>
+            <polygon points="335,335 340,325 345,335" fill="#f8fafc"/>
+
+            <path d="M330,340 C345,340 375,300 395,280 C380,315 355,355 325,350 Z" fill="url(#charizardSkin)" stroke="#1e293b" stroke-width="4"/>
+            <path d="M350,240 C365,238 375,245 370,252 C355,252 348,245 350,240 Z" fill="#ffffff" stroke="#1e293b" stroke-width="2"/>
+            <circle cx="363" cy="245" r="3.5" fill="#0284c7"/>
+            <circle cx="364" cy="245" r="1.5" fill="#000000"/>
+          </g>
+        </g>
+
+        <!-- LOGO POKÉMON -->
+        <g filter="url(#boxShadow)" transform="translate(130, 20)">
+          <!-- P -->
+          <path d="M25,50 L25,15 L50,15 C65,15 75,25 75,35 C75,48 62,50 50,50 L38,50 L38,70 L25,70 Z" fill="#2563eb" stroke="#1e3a8a" stroke-width="8" stroke-linejoin="round"/>
+          <path d="M25,50 L25,15 L50,15 C65,15 75,25 75,35 C75,48 62,50 50,50 L38,50 L38,70 L25,70 Z" fill="#fbbf24"/>
+          <!-- O -->
+          <ellipse cx="95" cy="45" rx="20" ry="25" fill="#2563eb" stroke="#1e3a8a" stroke-width="8" stroke-linejoin="round"/>
+          <ellipse cx="95" cy="45" rx="20" ry="25" fill="#fbbf24"/>
+          <ellipse cx="95" cy="45" rx="8" ry="12" fill="#1e3a8a"/>
+          <!-- K -->
+          <path d="M125,15 L140,15 L140,40 L158,15 L178,15 L152,45 L180,70 L160,70 L140,50 L140,70 L125,70 Z" fill="#2563eb" stroke="#1e3a8a" stroke-width="8" stroke-linejoin="round"/>
+          <path d="M125,15 L140,15 L140,40 L158,15 L178,15 L152,45 L180,70 L160,70 L140,50 L140,70 L125,70 Z" fill="#fbbf24"/>
+          <!-- E -->
+          <path d="M185,25 L215,25 L215,38 L198,38 L198,43 L212,43 L212,53 L198,53 L198,60 L218,60 L218,70 L185,70 Z" fill="#2563eb" stroke="#1e3a8a" stroke-width="8" stroke-linejoin="round"/>
+          <path d="M185,25 L215,25 L215,38 L198,38 L198,43 L212,43 L212,53 L198,53 L198,60 L218,60 L218,70 L185,70 Z" fill="#fbbf24"/>
+          <polygon points="195,18 208,8 214,12 201,22" fill="#fbbf24" stroke="#1e3a8a" stroke-width="3"/>
+        </g>
+
+        <!-- BANNER EDICIÓN ROJO FUEGO -->
+        <g filter="url(#boxShadow)" transform="translate(145, 95)">
+          <path d="M10,20 L190,10 L200,45 L0,55 Z" fill="#000000" stroke="#ffffff" stroke-width="3"/>
+          <text x="100" y="27" font-family="'Impact', 'Arial Black', sans-serif" font-size="14" fill="#ffffff" letter-spacing="3" text-anchor="middle">EDICIÓN</text>
+          <text x="100" y="47" font-family="'Impact', 'Arial Black', sans-serif" font-size="20" fill="#f87171" stroke="#450a0a" stroke-width="1" letter-spacing="2" text-anchor="middle">ROJO FUEGO</text>
+        </g>
+      </svg>
+    `;
+
     const gbaGames = [
       { 
         id: 1, 
         title: "Pokémon Rojo Fuego", 
-        image: "https://images.launchbox-app.com/8cbef1a4-94c3-488f-9a10-2f9a0397576f.jpg", 
+        svgHtml: charizardCoverSVG, 
         url: "pokemonrojofuego.html" 
       }
     ];
@@ -375,7 +525,9 @@
         const card = document.createElement('div');
         card.className = 'game-card';
         card.innerHTML = `
-          <img src="${game.image}" alt="${game.title}" loading="lazy">
+          <div class="cover-wrap">
+            ${game.svgHtml}
+          </div>
           <div class="game-title">${game.title}</div>
         `;
         card.addEventListener('click', () => {
