@@ -350,10 +350,10 @@
     const nesGames = [
       { id: 1, title: "Galaga", image: "https://thumbnails.libretro.com/Nintendo%20-%20Nintendo%20Entertainment%20System/Named_Boxarts/Galaga%20-%20Demons%20of%20Death%20(USA).png", url: "galaga.html" },
       { id: 2, title: "Arkanoid", image: "https://thumbnails.libretro.com/Nintendo%20-%20Nintendo%20Entertainment%20System/Named_Boxarts/Arkanoid%20(USA).png", url: "arkanoid.html" },
-      { id: 3, title: "Donkey Kong Classics", image: "https://thumbnails.libretro.com/Nintendo%20-%20Nintendo%20Entertainment%20System/Named_Boxarts/Donkey%20Kong%20Classics%20(USA%2C%20Europe).png", url: "https://funhtml5games.com/donkeykong/index.html" },
-      { id: 4, title: "Space Invaders NES", image: "https://thumbnails.libretro.com/Nintendo%20-%20Nintendo%20Entertainment%20System/Named_Boxarts/Space%20Invaders%20(Japan).png", url: "https://funhtml5games.com/spaceinvaders/index.html" },
-      { id: 5, title: "Bubble Bobble NES", image: "https://thumbnails.libretro.com/Nintendo%20-%20Nintendo%20Entertainment%20System/Named_Boxarts/Bubble%20Bobble%20(USA).png", url: "https://funhtml5games.com/bubblebobble/index.html" },
-      { id: 6, title: "Frogger Classic", image: "https://thumbnails.libretro.com/Nintendo%20-%20Nintendo%20Entertainment%20System/Named_Boxarts/Frogger%20(USA)%20(Proto).png", url: "https://funhtml5games.com/frogger/index.html" }
+      { id: 3, title: "Donkey Kong (NES)", image: "https://thumbnails.libretro.com/Nintendo%20-%20Nintendo%20Entertainment%20System/Named_Boxarts/Donkey%20Kong%20(World)%20(Rev%20A).png", url: "dk.html" },
+      { id: 4, title: "Space Invaders NES", image: "https://thumbnails.libretro.com/Nintendo%20-%20Nintendo%20Entertainment%20System/Named_Boxarts/Space%20Invaders%20(Japan).png", url: "spaceinvaders.html" },
+      { id: 5, title: "Bubble Bobble NES", image: "https://thumbnails.libretro.com/Nintendo%20-%20Nintendo%20Entertainment%20System/Named_Boxarts/Bubble%20Bobble%20(USA).png", url: "bubblebobble.html" },
+      { id: 6, title: "Frogger Classic", image: "https://thumbnails.libretro.com/Nintendo%20-%20Nintendo%20Entertainment%20System/Named_Boxarts/Frogger%20(USA)%20(Proto).png", url: "frogger.html" }
     ];
 
     const grid = document.getElementById('gamesGrid');
@@ -379,7 +379,7 @@
           <div class="game-title">${game.title}</div>
         `;
         card.addEventListener('click', () => {
-          modalTitle.textContent = game.title + " (NES)";
+          modalTitle.textContent = game.title;
           gameFrame.src = game.url;
           modal.classList.add('open');
           setTimeout(() => {
