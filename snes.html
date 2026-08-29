@@ -348,10 +348,30 @@
 
   <script>
     const snesGames = [
-      { id: 1, title: "Super Mario World", image: "https://thumbnails.libretro.com/Nintendo%20-%20Super%20Nintendo%20Entertainment%20System/Named_Boxarts/Super%20Mario%20World%20(USA).png", url: "mario.html" },
-      { id: 2, title: "Super Mario Kart", image: "https://thumbnails.libretro.com/Nintendo%20-%20Super%20Nintendo%20Entertainment%20System/Named_Boxarts/Super%20Mario%20Kart%20(USA).png", url: "mariokart.html" },
-      { id: 3, title: "DOOM", image: "https://thumbnails.libretro.com/Nintendo%20-%20Super%20Nintendo%20Entertainment%20System/Named_Boxarts/Doom%20(USA).png", url: "doom.html" },
-      { id: 4, title: "Super Metroid", image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&auto=format&fit=crop&q=80", url: "metroid.html" }
+      { 
+        id: 1, 
+        title: "Super Mario World", 
+        image: "https://thumbnails.libretro.com/Nintendo%20-%20Super%20Nintendo%20Entertainment%20System/Named_Boxarts/Super%20Mario%20World%20(USA).png", 
+        url: "mario.html" 
+      },
+      { 
+        id: 2, 
+        title: "Super Mario Kart", 
+        image: "https://thumbnails.libretro.com/Nintendo%20-%20Super%20Nintendo%20Entertainment%20System/Named_Boxarts/Super%20Mario%20Kart%20(USA).png", 
+        url: "mariokart.html" 
+      },
+      { 
+        id: 3, 
+        title: "DOOM", 
+        image: "https://thumbnails.libretro.com/Nintendo%20-%20Super%20Nintendo%20Entertainment%20System/Named_Boxarts/Doom%20(USA).png", 
+        url: "doom.html" 
+      },
+      { 
+        id: 4, 
+        title: "Super Metroid", 
+        image: "https://thumbnails.libretro.com/Nintendo%20-%20Super%20Nintendo%20Entertainment%20System/Named_Boxarts/Super%20Metroid%20(Japan%2C%20USA).png", 
+        url: "metroid.html" 
+      }
     ];
 
     const grid = document.getElementById('gamesGrid');
@@ -365,7 +385,7 @@
 
     function renderGames(list) {
       grid.innerHTML = '';
-      if (list.length === 0) {
+      if (!list || list.length === 0) {
         grid.innerHTML = '<p style="color: var(--text-muted); grid-column: 1/-1;">No se encontraron juegos de SNES.</p>';
         return;
       }
@@ -399,4 +419,21 @@
     fullscreenBtn.addEventListener('click', () => {
       fullscreenBtn.blur();
       if (!document.fullscreenElement) {
-        modalContainer.requestFullscreen().
+        modalContainer.requestFullscreen().catch(() => {
+          modalContainer.classList.toggle('fullscreen');
+        });
+      } else {
+        document.exitFullscreen();
+      }
+    });
+
+    searchInput.addEventListener('input', (e) => {
+      const term = e.target.value.toLowerCase();
+      renderGames(snesGames.filter(g => g.title.toLowerCase().includes(term)));
+    });
+
+    // Renderizado inicial
+    renderGames(snesGames);
+  </script>
+</body>
+</html>
