@@ -294,14 +294,11 @@
       color: var(--primary);
     }
 
-    .emulator-holder {
+    .modal-content iframe {
       width: 100%;
       flex: 1;
+      border: none;
       background-color: #000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
     }
   </style>
 </head>
@@ -336,7 +333,6 @@
     </div>
   </main>
 
-  <!-- Modal del Emulador -->
   <div class="modal" id="gameModal">
     <div class="modal-content" id="modalContainer">
       <div class="modal-header">
@@ -346,51 +342,28 @@
           <button class="btn-action" id="closeModal" title="Cerrar">&times;</button>
         </div>
       </div>
-      <div class="emulator-holder" id="emulatorBox">
-        <div id="game" style="width:100%; height:100%;"></div>
-      </div>
+      <iframe id="gameFrame" src="" allowfullscreen allow="autoplay; fullscreen; gamepad"></iframe>
     </div>
   </div>
 
   <script>
-    // Si tu archivo ROM tiene otro nombre (por ejemplo "pokemon.gba"), cámbialo en romPath:
     const gbaGames = [
       { 
         id: 1, 
         title: "Pokémon Rojo Fuego", 
         image: "https://thumbnails.libretro.com/Nintendo%20-%20Game%20Boy%20Advance/Named_Boxarts/Pokemon%20-%20FireRed%20Version%20(USA).png", 
-        romPath: "rojofuego.html"
+        url: "pokemon rojo fuego.gba" 
       }
     ];
 
     const grid = document.getElementById('gamesGrid');
     const modal = document.getElementById('gameModal');
     const modalContainer = document.getElementById('modalContainer');
-    const emulatorBox = document.getElementById('emulatorBox');
+    const gameFrame = document.getElementById('gameFrame');
     const modalTitle = document.getElementById('modalTitle');
     const closeModal = document.getElementById('closeModal');
     const fullscreenBtn = document.getElementById('fullscreenBtn');
     const searchInput = document.getElementById('searchInput');
-
-    function launchEJS(romUrl, title) {
-      emulatorBox.innerHTML = '<div id="game" style="width:100%; height:100%;"></div>';
-      
-      window.EJS_player = '#game';
-      window.EJS_core = 'gba';
-      window.EJS_gameName = title;
-      window.EJS_color = '#2ed573';
-      window.EJS_startOnLoaded = true;
-      window.EJS_pathtodata = 'https://cdn.emulatorjs.org/stable/data/';
-      window.EJS_gameUrl = romUrl;
-
-      const old = document.getElementById('ejs-script');
-      if (old) old.remove();
-
-      const s = document.createElement('script');
-      s.id = 'ejs-script';
-      s.src = 'https://cdn.emulatorjs.org/stable/data/loader.js';
-      document.body.appendChild(s);
-    }
 
     function renderGames(list) {
       grid.innerHTML = '';
@@ -407,8 +380,12 @@
         `;
         card.addEventListener('click', () => {
           modalTitle.textContent = game.title + " (GBA)";
+          gameFrame.src = game.url;
           modal.classList.add('open');
-          launchEJS(game.romPath, game.title);
+          setTimeout(() => {
+            gameFrame.focus();
+            if (gameFrame.contentWindow) gameFrame.contentWindow.focus();
+          }, 150);
         });
         grid.appendChild(card);
       });
@@ -418,7 +395,7 @@
       if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
       modal.classList.remove('open');
       modalContainer.classList.remove('fullscreen');
-      emulatorBox.innerHTML = '';
+      gameFrame.src = '';
     });
 
     fullscreenBtn.addEventListener('click', () => {
