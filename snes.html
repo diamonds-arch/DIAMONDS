@@ -57,7 +57,7 @@
       text-decoration: none;
     }
 
-    .badge-console {
+    .badge-snes {
       background: var(--primary);
       color: #fff;
       font-size: 0.8rem;
@@ -104,7 +104,7 @@
     .nav-btn.snes-btn {
       background: rgba(165, 94, 234, 0.25);
       border-color: var(--primary);
-      color: #d1a8ff;
+      color: #a55eea;
       box-shadow: 0 0 15px rgba(165, 94, 234, 0.35);
     }
 
@@ -205,7 +205,6 @@
       text-align: center;
     }
 
-    /* Adsterra Container */
     .ad-wrapper {
       margin-top: 3rem;
       padding: 1.5rem;
@@ -227,7 +226,6 @@
       margin-bottom: 0.8rem;
     }
 
-    /* Modal */
     .modal {
       display: none;
       position: fixed;
@@ -308,8 +306,8 @@
 
   <header>
     <div class="brand-wrap">
-      <a href="nes.html" class="brand">DIAMONDS</a>
-      <span class="badge-console">EMULATOR SNES</span>
+      <a href="snes.html" class="brand">DIAMONDS</a>
+      <span class="badge-snes">EMULATOR SNES</span>
     </div>
 
     <nav class="nav-links">
@@ -325,10 +323,9 @@
   </header>
 
   <main>
-    <div class="section-title">🕹️ Catálogo de Super Nintendo (SNES)</div>
+    <div class="section-title">🕹️ Catálogo de Super Nintendo</div>
     <div class="games-grid" id="gamesGrid"></div>
 
-    <!-- ANUNCIO ADSTERRA -->
     <div class="ad-wrapper">
       <div class="ad-tag">Publicidad Patrocinada</div>
       <script async="async" data-cfasync="false" src="https://pl31042827.profitableratecpmnetwork.com/f39ca1dab3c6020bea8bd186bd796ce9/invoke.js"></script>
@@ -351,30 +348,10 @@
 
   <script>
     const snesGames = [
-      { 
-        id: 1, 
-        title: "Super Mario World", 
-        image: "https://upload.wikimedia.org/wikipedia/ja/e/e0/Super_Mario_World_Super_Famicom_Cover.jpg", 
-        url: "smw.html" 
-      },
-      { 
-        id: 2, 
-        title: "Super Metroid", 
-        image: "https://images.launchbox-app.com/b95d0fb0-9106-444a-a436-e82dfbbd3527.jpg", 
-        url: "metroid.html" 
-      },
-      { 
-        id: 3, 
-        title: "Super Mario Kart", 
-        image: "https://images.launchbox-app.com/be7cfa8c-ea39-4467-bc18-ee58066f38fe.jpg", 
-        url: "mariokart.html" 
-      },
-      { 
-        id: 4, 
-        title: "Donkey Kong Country", 
-        image: "https://images.launchbox-app.com/15233157-1ba7-4228-a6d1-447a111a84f5.jpg", 
-        url: "dkc.html" 
-      }
+      { id: 1, title: "Super Mario World", image: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'><rect width='300' height='300' fill='%231b1429'/><path d='M80,150 C80,80 220,80 220,150 Z' fill='%23ff4757'/><circle cx='120' cy='120' r='14' fill='%23ffffff'/><circle cx='180' cy='120' r='14' fill='%23ffffff'/><rect x='115' y='150' width='70' height='20' rx='8' fill='%23fef08a'/><text x='150' y='250' font-family='monospace' font-size='18' font-weight='900' fill='%23ff4757' text-anchor='middle'>MARIO WORLD</text></svg>", url: "mario.html" },
+      { id: 2, title: "Super Mario Kart", image: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'><rect width='300' height='300' fill='%230f172a'/><circle cx='150' cy='120' r='45' fill='none' stroke='%23f59e0b' stroke-width='16'/><rect x='130' y='75' width='40' height='90' rx='10' fill='%23ef4444'/><circle cx='100' cy='140' r='16' fill='%23334155'/><circle cx='200' cy='140' r='16' fill='%23334155'/><text x='150' y='250' font-family='monospace' font-size='18' font-weight='900' fill='%23f59e0b' text-anchor='middle'>MARIO KART</text></svg>", url: "mariokart.html" },
+      { id: 3, title: "Donkey Kong Country", image: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'><rect width='300' height='300' fill='%23190a05'/><ellipse cx='150' cy='125' rx='55' ry='40' fill='%23854d0e'/><rect x='135' y='130' width='30' height='30' fill='%23dc2626' transform='rotate(45 150 145)'/><text x='150' y='150' font-family='sans-serif' font-size='12' font-weight='bold' fill='%23fef08a' text-anchor='middle'>DK</text><text x='150' y='250' font-family='monospace' font-size='18' font-weight='900' fill='%23eab308' text-anchor='middle'>DK COUNTRY</text></svg>", url: "dkcountry.html" },
+      { id: 4, title: "Super Metroid", image: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'><rect width='300' height='300' fill='%2305131e'/><ellipse cx='150' cy='120' rx='50' ry='35' fill='%23f97316'/><circle cx='150' cy='115' r='16' fill='%2310b981'/><polygon points='120,150 150,180 180,150' fill='%23ef4444'/><text x='150' y='250' font-family='monospace' font-size='18' font-weight='900' fill='%23f97316' text-anchor='middle'>SUPER METROID</text></svg>", url: "metroid.html" }
     ];
 
     const grid = document.getElementById('gamesGrid');
