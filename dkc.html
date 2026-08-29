@@ -2,21 +2,25 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Donkey Kong Country</title>
+  <title>Donkey Kong Country - DIAMONDS</title>
   <style>
-    body, html { margin: 0; padding: 0; width: 100%; height: 100%; background: #000; overflow: hidden; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 100%; height: 100%; background: #000; overflow: hidden; }
     #game { width: 100%; height: 100%; }
   </style>
 </head>
 <body>
-  <div style="width:100%;height:100%;max-width:100%">
-    <div id="game"></div>
-  </div>
-  <script type="text/javascript">
-    EJS_player = '#game';
-    EJS_core = 'snes';
-    EJS_gameUrl = 'dkc.sfc'; 
-    EJS_pathtodata = 'https://cdn.emulatorjs.org/stable/data/';
+  <div id="game"></div>
+
+  <script>
+    window.EJS_player = '#game';
+    window.EJS_core = 'snes';
+    window.EJS_gameName = 'Donkey Kong Country';
+    window.EJS_color = '#a55eea';
+    window.EJS_startOnLoaded = true;
+    window.EJS_pathtodata = 'https://cdn.emulatorjs.org/stable/data/';
+    // Aquí carga directamente el archivo subido a tu propio GitHub:
+    window.EJS_gameUrl = 'dkc.sfc'; 
   </script>
   <script src="https://cdn.emulatorjs.org/stable/data/loader.js"></script>
 </body>
