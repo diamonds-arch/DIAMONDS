@@ -39,7 +39,7 @@
           <button class="btn-action" id="closeModal" title="Cerrar (Esc)">&times;</button>
         </div>
       </div>
-      <iframe id="gameFrame" src="" allowfullscreen allow="autoplay; fullscreen; gamepad"></iframe>
+      <iframe id="gameFrame" src="" allowfullscreen allow="autoplay; fullscreen; gamepad; cross-origin-isolated"></iframe>
     </div>
   </div>
 
@@ -47,12 +47,29 @@
     window.D = {
       badge: "NES", search: "NES",
       games: [
-        { id: 1, title: "Galaga", image: "https://thumbnails.libretro.com/Nintendo%20-%20Nintendo%20Entertainment%20System/Named_Boxarts/Galaga%20-%20Demons%20of%20Death%20(USA).png", url: "galaga.html" },
-        { id: 2, title: "Arkanoid", image: "https://thumbnails.libretro.com/Nintendo%20-%20Nintendo%20Entertainment%20System/Named_Boxarts/Arkanoid%20(USA).png", url: "arkanoid.html" },
-        { id: 3, title: "Donkey Kong (NES)", image: "https://thumbnails.libretro.com/Nintendo%20-%20Nintendo%20Entertainment%20System/Named_Boxarts/Donkey%20Kong%20(World)%20(Rev%20A).png", url: "dk.html" },
-        { id: 4, title: "Space Invaders NES", image: "https://thumbnails.libretro.com/Nintendo%20-%20Nintendo%20Entertainment%20System/Named_Boxarts/Space%20Invaders%20(Japan).png", url: "spaceinvaders.html" },
-        { id: 5, title: "Bubble Bobble NES", image: "https://thumbnails.libretro.com/Nintendo%20-%20Nintendo%20Entertainment%20System/Named_Boxarts/Bubble%20Bobble%20(USA).png", url: "bubblebobble.html" },
-        { id: 6, title: "Frogger Classic", image: "https://thumbnails.libretro.com/Nintendo%20-%20Nintendo%20Entertainment%20System/Named_Boxarts/Frogger%20(USA)%20(Proto).png", url: "frogger.html" }
+        { id: 1, title: "Donkey Kong (NES)", image: "https://thumbnails.libretro.com/Nintendo%20-%20Nintendo%20Entertainment%20System/Named_Boxarts/Donkey%20Kong%20(World)%20(Rev%20A).png", url: "dk.html" },
+        { id: 2, title: "Galaga", image: "https://thumbnails.libretro.com/Nintendo%20-%20Nintendo%20Entertainment%20System/Named_Boxarts/Galaga%20-%20Demons%20of%20Death%20(USA).png", url: "galaga.html" },
+        { id: 3, title: "Arkanoid", image: "https://thumbnails.libretro.com/Nintendo%20-%20Nintendo%20Entertainment%20System/Named_Boxarts/Arkanoid%20(USA).png", url: "arkanoid.html" },
+        { id: 4, title: "Contra", image: "https://thumbnails.libretro.com/Nintendo%20-%20Nintendo%20Entertainment%20System/Named_Boxarts/Contra%20(USA).png", url: "contra.html" },
+        { id: 5, title: "Mega Man", image: "https://thumbnails.libretro.com/Nintendo%20-%20Nintendo%20Entertainment%20System/Named_Boxarts/Mega%20Man%20(USA).png", url: "mm1.html" },
+        { id: 6, title: "Mega Man 2", image: "https://thumbnails.libretro.com/Nintendo%20-%20Nintendo%20Entertainment%20System/Named_Boxarts/Mega%20Man%202%20(USA).png", url: "mm2.html" },
+        { id: 7, title: "Zelda II - The Adventure of Link", image: "https://thumbnails.libretro.com/Nintendo%20-%20Nintendo%20Entertainment%20System/Named_Boxarts/Zelda%20II%20-%20The%20Adventure%20of%20Link%20(USA).png", url: "zelda2.html" },
+        { id: 8, title: "Castlevania", image: "https://thumbnails.libretro.com/Nintendo%20-%20Nintendo%20Entertainment%20System/Named_Boxarts/Castlevania%20(USA).png", url: "castlevania.html" },
+        { id: 9, title: "Castlevania III - Dracula's Curse", image: "https://thumbnails.libretro.com/Nintendo%20-%20Nintendo%20Entertainment%20System/Named_Boxarts/Castlevania%20III%20-%20Dracula%27s%20Curse%20(USA).png", url: "castlevania3.html" },
+        { id: 10, title: "Mike Tyson's Punch-Out!!", image: "https://thumbnails.libretro.com/Nintendo%20-%20Nintendo%20Entertainment%20System/Named_Boxarts/Mike%20Tyson%27s%20Punch-Out!!%20(USA).png", url: "punchout.html" },
+        { id: 11, title: "Metroid", image: "https://thumbnails.libretro.com/Nintendo%20-%20Nintendo%20Entertainment%20System/Named_Boxarts/Metroid%20(USA).png", url: "metroidnes.html" },
+        { id: 12, title: "Shadow Warriors II (Ninja Gaiden II)", image: "https://thumbnails.libretro.com/Nintendo%20-%20Nintendo%20Entertainment%20System/Named_Boxarts/Ninja%20Gaiden%20II%20-%20The%20Dark%20Sword%20of%20Chaos%20(USA).png", url: "ng2.html" },
+        { id: 13, title: "Double Dragon II - The Revenge", image: "https://thumbnails.libretro.com/Nintendo%20-%20Nintendo%20Entertainment%20System/Named_Boxarts/Double%20Dragon%20II%20-%20The%20Revenge%20(USA).png", url: "dd2.html" },
+        { id: 14, title: "Duck Hunt", image: "https://thumbnails.libretro.com/Nintendo%20-%20Nintendo%20Entertainment%20System/Named_Boxarts/Duck%20Hunt%20(World).png", url: "duckhunt.html" },
+        { id: 15, title: "Teenage Mutant Hero Turtles II", image: "https://thumbnails.libretro.com/Nintendo%20-%20Nintendo%20Entertainment%20System/Named_Boxarts/Teenage%20Mutant%20Ninja%20Turtles%20II%20-%20The%20Arcade%20Game%20(USA).png", url: "tmnt2.html" },
+        { id: 16, title: "Super Mario Bros. 2", image: "https://thumbnails.libretro.com/Nintendo%20-%20Nintendo%20Entertainment%20System/Named_Boxarts/Super%20Mario%20Bros.%202%20(USA).png", url: "smb2.html" },
+        { id: 17, title: "Excitebike", image: "https://thumbnails.libretro.com/Nintendo%20-%20Nintendo%20Entertainment%20System/Named_Boxarts/Excitebike%20(Japan%2C%20USA).png", url: "excitebike.html" },
+        { id: 18, title: "Kirby's Adventure", image: "https://thumbnails.libretro.com/Nintendo%20-%20Nintendo%20Entertainment%20System/Named_Boxarts/Kirby%27s%20Adventure%20(USA).png", url: "kirby.html" },
+        { id: 19, title: "Tetris", image: "https://thumbnails.libretro.com/Nintendo%20-%20Nintendo%20Entertainment%20System/Named_Boxarts/Tetris%20(USA).png", url: "tetris.html" },
+        { id: 20, title: "Pac-Man", image: "https://thumbnails.libretro.com/Nintendo%20-%20Nintendo%20Entertainment%20System/Named_Boxarts/Pac-Man%20(USA)%20(Namco).png", url: "pacman.html" },
+        { id: 21, title: "Battle City", image: "https://thumbnails.libretro.com/Nintendo%20-%20Nintendo%20Entertainment%20System/Named_Boxarts/Battle%20City%20(Japan).png", url: "battlecity.html" },
+        { id: 22, title: "Super Mario Bros. 3", image: "https://thumbnails.libretro.com/Nintendo%20-%20Nintendo%20Entertainment%20System/Named_Boxarts/Super%20Mario%20Bros.%203%20(USA).png", url: "smb3.html" },
+        { id: 23, title: "Super Mario Bros.", image: "https://thumbnails.libretro.com/Nintendo%20-%20Nintendo%20Entertainment%20System/Named_Boxarts/Super%20Mario%20Bros.%20(World).png", url: "smb1.html" }
       ]
     };
   </script>
