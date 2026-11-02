@@ -3,24 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DIAMONDS - Emulator Game Boy Advance</title>
+  <title>DIAMONDS - Emulator Game Boy</title>
   <link rel="stylesheet" href="diamonds.css">
   <style>:root{--p:#2ed573;--on:#0b0f19}</style>
 </head>
 <body>
   <header>
-    <div class="brand-wrap"><a href="gba.html" class="brand">DIAMONDS</a><span class="badge">EMULATOR GBA</span></div>
+    <div class="brand-wrap"><a href="gba.html" class="brand">DIAMONDS</a><span class="badge">EMULATOR GAME BOY</span></div>
     <nav>
       <a href="nes.html" class="nav-btn" style="--c:#ff6b81">🔴 NES</a>
       <a href="snes.html" class="nav-btn" style="--c:#a55eea">🟣 SNES</a>
       <a href="sega.html" class="nav-btn" style="--c:#50e3c2">⚡ Sega Genesis</a>
       <a href="gba.html" class="nav-btn active" style="--c:#2ed573">🟢 Game Boy</a>
+      <a href="n64.html" class="nav-btn" style="--c:#ffa502">⭐ Nintendo 64</a>
     </nav>
     <div class="search"><input type="text" id="searchInput" placeholder="Buscar juego de Game Boy..." aria-label="Buscar juego"></div>
   </header>
 
   <main>
-    <div class="section-title">🕹️ Catálogo de Game Boy Advance <small id="count"></small></div>
+    <div class="section-title">🕹️ Catálogo de Game Boy <small id="count"></small></div>
     <div class="games-grid" id="gamesGrid"></div>
 
     <div class="ad-wrapper">
@@ -33,19 +34,19 @@
   <div class="modal" id="gameModal">
     <div class="modal-content" id="modalContainer">
       <div class="modal-header">
-        <h3 id="modalTitle">GBA Player</h3>
+        <h3 id="modalTitle">Game Boy Player</h3>
         <div class="header-actions">
           <button class="btn-action" id="fullscreenBtn" title="Pantalla completa">⛶</button>
           <button class="btn-action" id="closeModal" title="Cerrar (Esc)">&times;</button>
         </div>
       </div>
-      <iframe id="gameFrame" src="" allowfullscreen allow="autoplay; fullscreen; gamepad"></iframe>
+      <iframe id="gameFrame" src="" allowfullscreen allow="autoplay; fullscreen; gamepad; cross-origin-isolated"></iframe>
     </div>
   </div>
 
   <script>
     window.D = {
-      badge: "GBA", search: "GBA",
+      badge: "GBA", search: "Game Boy",
       games: [
         { id: 1, title: "Pokémon Rojo Fuego", image: "https://thumbnails.libretro.com/Nintendo%20-%20Game%20Boy%20Advance/Named_Boxarts/Pokemon%20-%20FireRed%20Version%20(USA).png", url: "rojofuego.html" }
       ]
