@@ -39,7 +39,7 @@
           <button class="btn-action" id="closeModal" title="Cerrar (Esc)">&times;</button>
         </div>
       </div>
-      <iframe id="gameFrame" src="" allowfullscreen allow="autoplay; fullscreen; gamepad"></iframe>
+      <iframe id="gameFrame" src="" allowfullscreen allow="autoplay; fullscreen; gamepad; cross-origin-isolated"></iframe>
     </div>
   </div>
 
@@ -48,7 +48,29 @@
       badge: "Sega", search: "Sega",
       games: [
         { id: 1, title: "Sonic The Hedgehog", image: "https://thumbnails.libretro.com/Sega%20-%20Mega%20Drive%20-%20Genesis/Named_Boxarts/Sonic%20The%20Hedgehog%20(USA%2C%20Europe).png", url: "sonic.html" },
-        { id: 2, title: "FIFA 98 - Road to World Cup", image: "https://thumbnails.libretro.com/Sega%20-%20Mega%20Drive%20-%20Genesis/Named_Boxarts/FIFA%2098%20-%20Road%20to%20World%20Cup%20(Europe)%20(En%2CFr%2CEs%2CIt%2CSv).png", url: "fifa98.html" }
+        { id: 2, title: "FIFA 98 - Road to World Cup", image: "https://thumbnails.libretro.com/Sega%20-%20Mega%20Drive%20-%20Genesis/Named_Boxarts/FIFA%2098%20-%20Road%20to%20World%20Cup%20(Europe)%20(En%2CFr%2CEs%2CIt%2CSv).png", url: "fifa98.html" },
+        { id: 3, title: "Sonic The Hedgehog 2", image: "https://thumbnails.libretro.com/Sega%20-%20Mega%20Drive%20-%20Genesis/Named_Boxarts/Sonic%20The%20Hedgehog%202%20(World).png", url: "s2.html" },
+        { id: 4, title: "Sonic & Knuckles", image: "https://thumbnails.libretro.com/Sega%20-%20Mega%20Drive%20-%20Genesis/Named_Boxarts/Sonic%20%26%20Knuckles%20(World).png", url: "sk.html" },
+        { id: 5, title: "Sonic The Hedgehog 3", image: "https://thumbnails.libretro.com/Sega%20-%20Mega%20Drive%20-%20Genesis/Named_Boxarts/Sonic%20The%20Hedgehog%203%20(USA).png", url: "s3.html" },
+        { id: 6, title: "Streets of Rage 2", image: "https://thumbnails.libretro.com/Sega%20-%20Mega%20Drive%20-%20Genesis/Named_Boxarts/Streets%20of%20Rage%202%20(USA).png", url: "sor2.html" },
+        { id: 7, title: "Streets of Rage", image: "https://thumbnails.libretro.com/Sega%20-%20Mega%20Drive%20-%20Genesis/Named_Boxarts/Streets%20of%20Rage%20(World).png", url: "sor1.html" },
+        { id: 8, title: "Streets of Rage 3", image: "https://thumbnails.libretro.com/Sega%20-%20Mega%20Drive%20-%20Genesis/Named_Boxarts/Streets%20of%20Rage%203%20(USA).png", url: "sor3.html" },
+        { id: 9, title: "Mortal Kombat 3", image: "https://thumbnails.libretro.com/Sega%20-%20Mega%20Drive%20-%20Genesis/Named_Boxarts/Mortal%20Kombat%203%20(USA).png", url: "mk3.html" },
+        { id: 10, title: "Ultimate Mortal Kombat 3", image: "https://thumbnails.libretro.com/Sega%20-%20Mega%20Drive%20-%20Genesis/Named_Boxarts/Ultimate%20Mortal%20Kombat%203%20(USA).png", url: "umk3.html" },
+        { id: 11, title: "Golden Axe", image: "https://thumbnails.libretro.com/Sega%20-%20Mega%20Drive%20-%20Genesis/Named_Boxarts/Golden%20Axe%20(World).png", url: "ga.html" },
+        { id: 12, title: "Golden Axe II", image: "https://thumbnails.libretro.com/Sega%20-%20Mega%20Drive%20-%20Genesis/Named_Boxarts/Golden%20Axe%20II%20(World).png", url: "ga2.html" },
+        { id: 13, title: "Earthworm Jim", image: "https://thumbnails.libretro.com/Sega%20-%20Mega%20Drive%20-%20Genesis/Named_Boxarts/Earthworm%20Jim%20(USA).png", url: "ej.html" },
+        { id: 14, title: "Earthworm Jim 2", image: "https://thumbnails.libretro.com/Sega%20-%20Mega%20Drive%20-%20Genesis/Named_Boxarts/Earthworm%20Jim%202%20(USA).png", url: "ej2.html" },
+        { id: 15, title: "Shinobi III: Return of the Ninja Master", image: "https://thumbnails.libretro.com/Sega%20-%20Mega%20Drive%20-%20Genesis/Named_Boxarts/Shinobi%20III%20-%20Return%20of%20the%20Ninja%20Master%20(USA).png", url: "sh3.html" },
+        { id: 16, title: "Comix Zone", image: "https://thumbnails.libretro.com/Sega%20-%20Mega%20Drive%20-%20Genesis/Named_Boxarts/Comix%20Zone%20(USA).png", url: "cz.html" },
+        { id: 17, title: "James Bond 007: The Duel", image: "https://thumbnails.libretro.com/Sega%20-%20Mega%20Drive%20-%20Genesis/Named_Boxarts/James%20Bond%20007%20-%20The%20Duel%20(Europe).png", url: "007.html" },
+        { id: 18, title: "Contra: Hard Corps", image: "https://thumbnails.libretro.com/Sega%20-%20Mega%20Drive%20-%20Genesis/Named_Boxarts/Contra%20-%20Hard%20Corps%20(USA).png", url: "chc.html" },
+        { id: 19, title: "Castlevania: Bloodlines", image: "https://thumbnails.libretro.com/Sega%20-%20Mega%20Drive%20-%20Genesis/Named_Boxarts/Castlevania%20-%20Bloodlines%20(USA).png", url: "cb.html" },
+        { id: 20, title: "Gunstar Heroes", image: "https://thumbnails.libretro.com/Sega%20-%20Mega%20Drive%20-%20Genesis/Named_Boxarts/Gunstar%20Heroes%20(USA).png", url: "gh.html" },
+        { id: 21, title: "Altered Beast", image: "https://thumbnails.libretro.com/Sega%20-%20Mega%20Drive%20-%20Genesis/Named_Boxarts/Altered%20Beast%20(USA%2C%20Europe).png", url: "ab.html" },
+        { id: 22, title: "Road Rash II", image: "https://thumbnails.libretro.com/Sega%20-%20Mega%20Drive%20-%20Genesis/Named_Boxarts/Road%20Rash%20II%20(USA%2C%20Europe).png", url: "rr2.html" },
+        { id: 23, title: "NBA Jam: Tournament Edition", image: "https://thumbnails.libretro.com/Sega%20-%20Mega%20Drive%20-%20Genesis/Named_Boxarts/NBA%20Jam%20-%20Tournament%20Edition%20(World).png", url: "nbajam.html" },
+        { id: 24, title: "Vectorman", image: "https://thumbnails.libretro.com/Sega%20-%20Mega%20Drive%20-%20Genesis/Named_Boxarts/Vectorman%20(USA%2C%20Europe).png", url: "vm.html" }
       ]
     };
   </script>
