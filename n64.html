@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DIAMONDS - Emulator Nintendo 64</title>
+  <link rel="stylesheet" href="diamonds.css">
+  <style>:root{--p:#ffa502;--on:#0b0f19}</style>
+</head>
+<body>
+  <header>
+    <div class="brand-wrap"><a href="n64.html" class="brand">DIAMONDS</a><span class="badge">EMULATOR N64</span></div>
+    <nav>
+      <a href="nes.html" class="nav-btn" style="--c:#ff6b81">🔴 NES</a>
+      <a href="snes.html" class="nav-btn" style="--c:#a55eea">🟣 SNES</a>
+      <a href="sega.html" class="nav-btn" style="--c:#50e3c2">⚡ Sega Genesis</a>
+      <a href="gba.html" class="nav-btn" style="--c:#2ed573">🟢 Game Boy</a>
+      <a href="n64.html" class="nav-btn active" style="--c:#ffa502">⭐ Nintendo 64</a>
+    </nav>
+    <div class="search"><input type="text" id="searchInput" placeholder="Buscar juego de Nintendo 64..." aria-label="Buscar juego"></div>
+  </header>
+
+  <main>
+    <div class="section-title">🕹️ Catálogo de Nintendo 64 <small id="count"></small></div>
+    <div class="games-grid" id="gamesGrid"></div>
+
+    <div class="ad-wrapper">
+      <div class="ad-tag">Publicidad Patrocinada</div>
+      <script async="async" data-cfasync="false" src="https://pl31042827.profitableratecpmnetwork.com/f39ca1dab3c6020bea8bd186bd796ce9/invoke.js"></script>
+      <div id="container-f39ca1dab3c6020bea8bd186bd796ce9"></div>
+    </div>
+  </main>
+
+  <div class="modal" id="gameModal">
+    <div class="modal-content" id="modalContainer">
+      <div class="modal-header">
+        <h3 id="modalTitle">N64 Player</h3>
+        <div class="header-actions">
+          <button class="btn-action" id="fullscreenBtn" title="Pantalla completa">⛶</button>
+          <button class="btn-action" id="closeModal" title="Cerrar (Esc)">&times;</button>
+        </div>
+      </div>
+      <iframe id="gameFrame" src="" allowfullscreen allow="autoplay; fullscreen; gamepad; cross-origin-isolated"></iframe>
+    </div>
+  </div>
+
+  <script>
+    window.D = {
+      badge: "N64", search: "Nintendo 64",
+      games: []
+    };
+  </script>
+  <script src="diamonds.js"></script>
+</body>
+</html>
